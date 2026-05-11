@@ -1,25 +1,9 @@
-import { useState, useEffect, type FormEvent } from 'react'
+import { useState, type FormEvent } from 'react'
 import { Navigate, useSearchParams } from 'react-router-dom'
 import { Loader2, Eye, EyeOff } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../hooks/useAuth'
 import { Captcha } from '../components/ui/Captcha'
-
-const TOURNAMENT_START = new Date('2026-06-11T00:00:00Z').getTime()
-
-function CountdownTimer() {
-  const [timeLeft, setTimeLeft] = useState(() => TOURNAMENT_START - Date.now())
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimeLeft(TOURNAMENT_START - Date.now())
-    }, 1000)
-    return () => clearInterval(interval)
-  }, [])
-
-  if (timeLeft <= 0) return null
-
-}
 
 type Tab = 'login' | 'register' | 'forgot' | 'reset'
 
