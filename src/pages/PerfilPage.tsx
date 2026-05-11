@@ -136,11 +136,11 @@ function PerfilContent() {
 
       {/* Datos editables */}
       <div className="card p-6 mb-4">
-        <h2 className="text-sm font-semibold text-text-secondary mb-4">Información</h2>
+        <h2 className="text-sm font-semibold text-zinc-800 mb-4">Información</h2>
 
         <div className="space-y-4">
           <div>
-            <label className="block text-xs text-text-secondary mb-1.5">Nombre para mostrar</label>
+            <label className="block text-xs text-zinc-600 mb-1.5">Nombre para mostrar</label>
             <input
               type="text"
               value={displayName}
@@ -151,7 +151,7 @@ function PerfilContent() {
           </div>
 
           <div>
-            <label className="block text-xs text-text-secondary mb-1.5">Usuario</label>
+            <label className="block text-xs text-zinc-600 mb-1.5">Usuario</label>
             <input
               type="text"
               value={`@${profile.username}`}
@@ -161,7 +161,7 @@ function PerfilContent() {
           </div>
 
           <div>
-            <label className="block text-xs text-text-secondary mb-1.5">Email</label>
+            <label className="block text-xs text-zinc-600 mb-1.5">Email</label>
             <input
               type="email"
               value={user.email ?? ''}
@@ -185,13 +185,13 @@ function PerfilContent() {
 
       {/* Seguridad */}
       <div className="card p-6 mb-4">
-        <h2 className="text-sm font-semibold text-text-secondary mb-4 flex items-center gap-2">
+        <h2 className="text-sm font-semibold text-zinc-800 mb-4 flex items-center gap-2">
           <Lock size={14} /> Seguridad
         </h2>
 
         <div className="space-y-4">
           <div>
-            <label className="block text-xs text-text-secondary mb-1.5">Nueva contraseña</label>
+            <label className="block text-xs text-zinc-600 mb-1.5">Nueva contraseña</label>
             <div className="relative">
               <input
                 type={showPass ? 'text' : 'password'}

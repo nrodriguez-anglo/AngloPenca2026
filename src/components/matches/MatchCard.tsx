@@ -35,12 +35,12 @@ export function MatchCard({ match, onClick, onStadiumClick, onPredictionsClick, 
               {match.phase.name}
             </span>
           )}
-          <span className="text-text-muted text-xs">#{match.match_number}</span>
+          <span className="text-zinc-500 text-xs">#{match.match_number}</span>
         </div>
 
         {hasScore ? (
           <button
-            className="flex items-center gap-1 text-text-muted text-xs hover:text-primary transition-colors"
+            className="flex items-center gap-1 text-primary text-xs hover:text-primary transition-colors"
             onClick={(e) => {
               e.stopPropagation()
               onPredictionsClick?.(match.id)
@@ -50,7 +50,7 @@ export function MatchCard({ match, onClick, onStadiumClick, onPredictionsClick, 
             <span>Ver apuestas</span>
           </button>
         ) : (
-          <span className="text-text-secondary text-xs">
+          <span className="text-zinc-500 text-xs">
             {formatMatchTime(match.match_datetime)}
           </span>
         )}
@@ -72,21 +72,21 @@ export function MatchCard({ match, onClick, onStadiumClick, onPredictionsClick, 
         <div className="flex-shrink-0 w-20 text-center">
           {hasScore ? (
             <div className="flex items-center justify-center gap-1.5">
-              <span className={`text-2xl font-bold tabular-nums ${homeWon ? 'text-primary' : 'text-text-primary'}`}>
+              <span className={`text-2xl font-bold tabular-nums ${homeWon ? 'text-primary' : 'text-zinc-600'}`}>
                 {match.home_score_90}
               </span>
-              <span className="text-text-muted text-lg">:</span>
-              <span className={`text-2xl font-bold tabular-nums ${awayWon ? 'text-primary' : 'text-text-primary'}`}>
+              <span className="text-zinc-500 text-lg">:</span>
+              <span className={`text-2xl font-bold tabular-nums ${awayWon ? 'text-primary' : 'text-zinc-600'}`}>
                 {match.away_score_90}
               </span>
             </div>
           ) : (
-            <span className="text-text-muted text-xl font-light">vs</span>
+            <span className="text-zinc-800 text-xl font-light">vs</span>
           )}
 
           {/* Indicadores de ET y penales */}
           {match.home_score_et !== null && (
-            <div className="text-xs text-text-muted mt-1 tabular-nums">
+            <div className="text-xs text-zinc-500 mt-1 tabular-nums">
               ET {match.home_score_et} - {match.away_score_et}
             </div>
           )}
@@ -118,8 +118,8 @@ export function MatchCard({ match, onClick, onStadiumClick, onPredictionsClick, 
               onStadiumClick?.(match.stadium.id)
             }}
           >
-            <MapPin size={11} className="text-text-muted flex-shrink-0" />
-            <span className="text-[11px] text-text-muted truncate">
+            <MapPin size={11} className="text-zinc-500 flex-shrink-0" />
+            <span className="text-[11px] text-zinc-500 truncate">
               {match.stadium.name} · {match.stadium.city}
             </span>
           </div>

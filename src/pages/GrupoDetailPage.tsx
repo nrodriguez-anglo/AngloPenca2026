@@ -45,11 +45,11 @@ export function GrupoDetailPage() {
         <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
           <span className="text-lg font-bold text-primary">{groupName}</span>
         </div>
-        <h1 className="text-xl font-bold text-text-primary">Grupo {groupName}</h1>
+        <h1 className="text-xl font-bold text-zinc-800">Grupo {groupName}</h1>
       </div>
 
       {/* Tabla de posiciones */}
-      <section className="card p-4 mb-5">
+      <section className="group-card p-4 mb-5">
         <h2 className="text-xs font-semibold text-text-muted uppercase tracking-wide mb-3">
           Posiciones
         </h2>

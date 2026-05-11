@@ -27,7 +27,7 @@ export function GroupTable({ standings, compact = false, onTeamClick }: Props) {
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
-          <tr className="text-text-muted text-xs uppercase tracking-wide border-b border-border">
+          <tr className="text-zinc-500 text-xs uppercase tracking-wide border-b border-border">
             <th className="text-left pb-2 pl-3 w-6">#</th>
             <th className="text-left pb-2 pl-2">Equipo</th>
             <th className="text-center pb-2 px-2">PJ</th>
@@ -41,7 +41,7 @@ export function GroupTable({ standings, compact = false, onTeamClick }: Props) {
               </>
             )}
             <th className="text-center pb-2 px-2">GD</th>
-            <th className="text-center pb-2 px-2 font-bold text-text-secondary">PTS</th>
+            <th className="text-center pb-2 px-2 font-bold text-zinc-700">PTS</th>
           </tr>
         </thead>
         <tbody>
@@ -50,10 +50,10 @@ export function GroupTable({ standings, compact = false, onTeamClick }: Props) {
               key={row.team_id}
               onClick={() => onTeamClick?.(row.team_id)}
               className={`${positionColors[row.position]} transition-colors ${
-                onTeamClick ? 'cursor-pointer hover:bg-surface-2' : 'hover:bg-surface-2'
+                onTeamClick ? 'cursor-pointer hover:bg-zinc-200' : 'hover:bg-zinc-200'
               }`}
             >
-              <td className="py-2 pl-3 text-text-muted text-xs">{row.position}</td>
+              <td className="py-2 pl-3 text-zinc-400 text-xs">{row.position}</td>
 
               {/* Equipo: bandera + nombre */}
               <td className="py-2 pl-2">
@@ -68,7 +68,7 @@ export function GroupTable({ standings, compact = false, onTeamClick }: Props) {
                   ) : (
                     <div className="w-5 h-4 rounded-sm bg-border flex-shrink-0" />
                   )}
-                  <span className="text-text-primary text-xs font-medium truncate max-w-[120px]">
+                  <span className="text-zinc-600 text-xs font-medium truncate max-w-[120px]">
                     {row.is_confirmed
                       ? row.team_name
                       : (row.placeholder_name ?? row.team_name)
@@ -77,22 +77,22 @@ export function GroupTable({ standings, compact = false, onTeamClick }: Props) {
                 </div>
               </td>
 
-              <td className="py-2 px-2 text-center text-text-secondary">{row.pj}</td>
+              <td className="py-2 px-2 text-center text-zinc-400">{row.pj}</td>
 
               {!compact && (
                 <>
-                  <td className="py-2 px-2 text-center text-text-secondary">{row.pg}</td>
-                  <td className="py-2 px-2 text-center text-text-secondary">{row.pe}</td>
-                  <td className="py-2 px-2 text-center text-text-secondary">{row.pp}</td>
-                  <td className="py-2 px-2 text-center text-text-secondary">{row.gf}</td>
-                  <td className="py-2 px-2 text-center text-text-secondary">{row.gc}</td>
+                  <td className="py-2 px-2 text-center text-zinc-400">{row.pg}</td>
+                  <td className="py-2 px-2 text-center text-zinc-400">{row.pe}</td>
+                  <td className="py-2 px-2 text-center text-zinc-400">{row.pp}</td>
+                  <td className="py-2 px-2 text-center text-zinc-400">{row.gf}</td>
+                  <td className="py-2 px-2 text-center text-zinc-400">{row.gc}</td>
                 </>
               )}
 
-              <td className="py-2 px-2 text-center text-text-secondary">
+              <td className="py-2 px-2 text-center text-zinc-400">
                 {row.gd > 0 ? `+${row.gd}` : row.gd}
               </td>
-              <td className="py-2 px-2 text-center font-bold text-text-primary">{row.pts}</td>
+              <td className="py-2 px-2 text-center font-bold text-zinc-400">{row.pts}</td>
             </tr>
           ))}
         </tbody>
@@ -100,13 +100,13 @@ export function GroupTable({ standings, compact = false, onTeamClick }: Props) {
 
       {/* Leyenda */}
       {!compact && (
-        <div className="flex items-center gap-4 mt-3 px-1 text-[10px] text-text-muted">
+        <div className="flex items-center gap-4 mt-3 px-1 text-[10px] text-zinc-600">
           <span className="flex items-center gap-1">
             <span className="w-2 h-2 rounded-full bg-primary inline-block" />
             Clasifican directo
           </span>
           <span className="flex items-center gap-1">
-            <span className="w-2 h-2 rounded-full bg-accent/60 inline-block" />
+            <span className="w-2 h-2 rounded-full bg-zinc-400 inline-block" />
             Posible mejor 3ro
           </span>
         </div>

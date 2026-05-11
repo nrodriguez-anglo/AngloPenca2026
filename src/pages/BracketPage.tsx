@@ -146,8 +146,8 @@ function MatchCard({ matchNum, matchMap }: { matchNum: number; matchMap: MatchMa
 
   return (
     <div className="rounded-lg overflow-hidden bg-surface border border-border" style={{ width: CARD_W }}>
-      <div className="px-2 py-[2px] bg-surface-2 border-b border-border">
-        <span className="text-[9px] text-text-muted font-medium">M{matchNum}</span>
+      <div className="px-2 py-[2px] bg-zinc-700 border-b border-border">
+        <span className="text-[9px] text-zinc-200 font-medium">M{matchNum}</span>
       </div>
       <TeamRow team={home} label={homeLabel} score={homeScore} etTotal={homeEtTotal} suffix={homeSuffix} winner={homeWin} loser={awayWin} />
       <div className="h-px bg-border" />
@@ -279,12 +279,12 @@ function MiCuadro({ userId, knockoutMatches }: {
 
   return (
     <div className="space-y-4">
-      <div className="rounded-xl bg-surface border border-border px-4 py-3 text-sm text-text-secondary">
+      <div className="rounded-xl bg-surface border border-border px-4 py-3 text-sm text-zinc-700">
         Este es el cuadro final según tus predicciones. Los equipos avanzan de
         acuerdo a los resultados que vos apostaste en los partidos de grupos y
         eliminatorias.
         {predCount === 0 && (
-          <span className="block mt-1 text-accent font-medium">
+          <span className="block mt-1 text-zinc-900 font-medium">
             Todavía no tenés predicciones cargadas — cargá tus apuestas en la sección Fixture.
           </span>
         )}
@@ -326,7 +326,7 @@ export function BracketPage() {
           className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-sm font-medium transition-colors ${
             activeTab === 'torneo'
               ? 'bg-primary text-white'
-              : 'text-text-secondary hover:text-text-primary'
+              : 'text-zinc-700 hover:text-primary'
           }`}
         >
           <Trophy size={14} />
@@ -337,7 +337,7 @@ export function BracketPage() {
           className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-sm font-medium transition-colors ${
             activeTab === 'mio'
               ? 'bg-primary text-white'
-              : 'text-text-secondary hover:text-text-primary'
+              : 'text-zinc-700 hover:text-primary'
           }`}
         >
           <User size={14} />

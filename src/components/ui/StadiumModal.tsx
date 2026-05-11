@@ -42,22 +42,22 @@ export function StadiumModal({ open, onClose, stadium }: Props) {
           <div className="flex items-start gap-3 text-sm">
             <MapPin size={16} className="text-primary mt-0.5 flex-shrink-0" />
             <div>
-              <p className="text-text-primary font-medium">{stadium.city}</p>
-              <p className="text-text-secondary">{stadium.country}</p>
+              <p className="text-zinc-600 font-medium">{stadium.city}</p>
+              <p className="text-zinc-500">{stadium.country}</p>
             </div>
           </div>
 
           {stadium.address && (
             <div className="flex items-start gap-3 text-sm">
               <Globe size={16} className="text-primary mt-0.5 flex-shrink-0" />
-              <p className="text-text-secondary">{stadium.address}</p>
+              <p className="text-zinc-600">{stadium.address}</p>
             </div>
           )}
 
           {stadium.capacity && (
             <div className="flex items-start gap-3 text-sm">
               <Users size={16} className="text-primary mt-0.5 flex-shrink-0" />
-              <p className="text-text-secondary">
+              <p className="text-zinc-600">
                 Capacidad: {stadium.capacity.toLocaleString('es')} espectadores
               </p>
             </div>
@@ -66,7 +66,7 @@ export function StadiumModal({ open, onClose, stadium }: Props) {
           {stadium.timezone && (
             <div className="flex items-start gap-3 text-sm">
               <Clock size={16} className="text-primary mt-0.5 flex-shrink-0" />
-              <p className="text-text-secondary">Zona horaria: {stadium.timezone}</p>
+              <p className="text-zinc-600">Zona horaria: {stadium.timezone}</p>
             </div>
           )}
         </div>

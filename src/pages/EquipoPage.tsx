@@ -33,7 +33,7 @@ export function EquipoPage() {
   if (!team) {
     return (
       <div className="text-center py-16">
-        <p className="text-text-muted mb-4">Equipo no encontrado.</p>
+        <p className="text-zinc-500 mb-4">Equipo no encontrado.</p>
         <Link to="/fixture" className="btn-primary text-sm">
           Ir al fixture
         </Link>

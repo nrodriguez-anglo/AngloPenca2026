@@ -131,7 +131,7 @@ export function FixturePage() {
             onClick={() => setGroupName(undefined)}
             className={`flex-shrink-0 px-2.5 py-1 rounded text-xs font-medium transition-colors ${
               !groupName
-                ? 'bg-accent/80 text-white'
+                ? 'bg-zinc-800 text-white'
                 : 'text-text-muted hover:text-text-secondary'
             }`}
           >
@@ -146,8 +146,8 @@ export function FixturePage() {
               }}
               className={`flex-shrink-0 px-2 h-7 rounded text-xs font-bold transition-colors ${
                 groupName === g
-                  ? 'bg-accent/20 text-accent'
-                  : 'text-text-muted hover:text-text-secondary'
+                  ? 'bg-primary text-white'
+                  : 'text-zinc-600 hover:text-white hover:bg-primary'
               }`}
             >
               G. {g}
@@ -173,14 +173,14 @@ export function FixturePage() {
       {!isLoading && !error && (
         <div className="space-y-6">
           {groupedByDate.length === 0 && (
-            <p className="text-text-muted text-sm text-center py-8">
+            <p className="text-zinc-800 text-sm text-center py-8">
               No hay partidos para mostrar.
             </p>
           )}
 
           {groupedByDate.map(({ dateKey, label, matches: dayMatches }) => (
             <section key={dateKey}>
-              <h2 className="text-xs font-semibold text-text-muted uppercase tracking-widest mb-2 capitalize">
+              <h2 className="text-xs font-semibold text-zinc-600 uppercase tracking-widest mb-2 capitalize">
                 {label}
               </h2>
               <div className="space-y-3">

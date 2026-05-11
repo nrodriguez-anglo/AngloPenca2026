@@ -37,7 +37,7 @@ export function GruposPage() {
           className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
             !selected
               ? 'bg-primary text-white'
-              : 'bg-surface-2 text-text-secondary hover:text-text-primary'
+              : 'bg-zinc-800 text-white hover:text-text-primary'
           }`}
         >
           Todos
@@ -49,7 +49,7 @@ export function GruposPage() {
             className={`flex-shrink-0 w-9 h-8 rounded-full text-xs font-bold transition-colors ${
               selected === g
                 ? 'bg-primary text-white'
-                : 'bg-surface-2 text-text-secondary hover:text-text-primary'
+                : 'bg-zinc-800 text-white hover:bg-primary'
             }`}
           >
             {g}

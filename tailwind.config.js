@@ -6,7 +6,7 @@ export default {
       colors: {
         background: '#FFFFFF',
         surface: '#F4F4F5',
-        'surface-2': '#1A2030',
+        'surface-2': 'zinc-700',
         border: '#F4F4F5',
         primary: {
           DEFAULT: '#D1172B',
@@ -19,9 +19,9 @@ export default {
           light: '#FEF3C7',
         },
         text: {
-          primary: '#F8FAFC',
+          primary: '#27272a',
           secondary: '#1E3F77',
-          muted: '#475569',
+          muted: '#71717b',
         },
         success: '#10B981',
         warning: '#F59E0B',

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Menu, X, ShieldCheck, HelpCircle, QrCode } from 'lucide-react'
+import { Menu, X, ShieldCheck, HelpCircle } from 'lucide-react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 
@@ -49,7 +49,6 @@ export function Header() {
             <DeskNavLink to="/fixture">Fixture</DeskNavLink>
             <DeskNavLink to="/grupos">Grupos</DeskNavLink>
             <DeskNavLink to="/ranking">Ranking</DeskNavLink>
-            {user && <DeskNavLink to="/subgrupos">Subgrupos</DeskNavLink>}
             <DeskNavLink to="/cuadro">Cuadro</DeskNavLink>
             {user && <DeskNavLink to="/mis-predicciones">JUGAR</DeskNavLink>}
             {user && <DeskNavLink to="/mas-puntos">+ Puntos</DeskNavLink>}
@@ -78,15 +77,8 @@ export function Header() {
 
                 {userMenuOpen && (
                   <div className="absolute right-0 top-full mt-1 w-48 card py-1 shadow-2xl z-50">
-                    <div className="px-4 py-2 border-b border-border">
-                      <p className="text-xs font-medium text-text-primary truncate">{profile?.display_name}</p>
-                      <p className="text-[11px] text-text-muted truncate">@{profile?.username}</p>
-                    </div>
-                    <Link to="/perfil" className="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-surface-2 transition-colors">
+                    <Link to="/perfil" className="block px-4 py-2 text-sm text-primary hover:text-text-primary hover:bg-surface-2 transition-colors">
                       Mi perfil
-                    </Link>
-                    <Link to="/descargar" className="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-surface-2 transition-colors flex items-center gap-2">
-                      <QrCode size={14} /> Descargar app
                     </Link>
                     {isAdmin && (
                       <>
@@ -118,7 +110,7 @@ export function Header() {
                     )}
                     <button
                       onClick={signOut}
-                      className="w-full text-left px-4 py-2 text-sm text-error hover:bg-surface-2 transition-colors"
+                      className="w-full text-left px-4 py-2 text-sm text-primary hover:text-zinc-800 transition-colors"
                     >
                       Cerrar sesión
                     </button>
@@ -151,7 +143,6 @@ export function Header() {
             <MobileNavLink to="/fixture">Fixture</MobileNavLink>
             <MobileNavLink to="/grupos">Grupos</MobileNavLink>
             <MobileNavLink to="/ranking">Ranking</MobileNavLink>
-            {user && <MobileNavLink to="/subgrupos">Subgrupos</MobileNavLink>}
             <MobileNavLink to="/cuadro">Cuadro</MobileNavLink>
             {user && <MobileNavLink to="/mis-predicciones">JUGAR</MobileNavLink>}
             {user && <MobileNavLink to="/mas-puntos">+ Puntos</MobileNavLink>}
