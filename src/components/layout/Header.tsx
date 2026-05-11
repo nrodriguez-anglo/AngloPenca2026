@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Trophy, Menu, X, ShieldCheck, HelpCircle, QrCode, Smartphone } from 'lucide-react'
+import { Menu, X, ShieldCheck, HelpCircle, QrCode } from 'lucide-react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 
@@ -33,13 +33,15 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-background/95 backdrop-blur border-b border-border">
+      <header className="sticky top-0 z-40 bg-primary backdrop-blur border-b border-border">
         <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
           {/* Logo */}
           <Link to="/fixture" className="flex items-center gap-2 font-bold text-text-primary">
-            <Trophy className="text-accent" size={20} />
-            <span className="text-sm font-semibold hidden xs:block">PencaLes 2026</span>
-            <span className="text-sm font-semibold xs:hidden">PencaLes 2026</span>
+            <img
+              src="/logo-horizontal.png"
+              alt="Anglo"
+              className="h-10 pb-1 object-contain"
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -125,13 +127,6 @@ export function Header() {
               </div>
             ) : (
               <div className="flex items-center gap-2">
-                <Link
-                  to="/descargar"
-                  title="Descargar App Android"
-                  className="p-2 text-text-muted hover:text-primary transition-colors flex items-center justify-center"
-                >
-                  <Smartphone size={20} />
-                </Link>
                 <Link to="/auth" className="btn-primary text-sm py-1.5 px-3">
                   Ingresar
                 </Link>
@@ -177,7 +172,7 @@ function DeskNavLink({ to, children }: { to: string; children: React.ReactNode }
       to={to}
       className={({ isActive }) =>
         `px-3 py-1.5 text-sm rounded-lg transition-colors ${
-          isActive ? 'text-text-primary bg-surface-2' : 'text-text-secondary hover:text-text-primary hover:bg-surface-2'
+          isActive ? 'text-primary bg-white' : 'text-white hover:text-primary hover:bg-white'
         }`
       }
     >

@@ -116,7 +116,7 @@ export function FixturePage() {
             className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
               phaseOrder === tab.phaseOrder
                 ? 'bg-primary text-white'
-                : 'bg-surface-2 text-text-secondary hover:text-text-primary'
+                : 'bg-zinc-800 text-white hover:bg-primary hover:text-white'
             }`}
           >
             {tab.label}
@@ -131,7 +131,7 @@ export function FixturePage() {
             onClick={() => setGroupName(undefined)}
             className={`flex-shrink-0 px-2.5 py-1 rounded text-xs font-medium transition-colors ${
               !groupName
-                ? 'bg-accent/20 text-accent'
+                ? 'bg-accent/80 text-white'
                 : 'text-text-muted hover:text-text-secondary'
             }`}
           >

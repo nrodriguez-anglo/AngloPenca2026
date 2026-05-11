@@ -2,7 +2,7 @@
 -- 00_RESET_INIT.SQL — PencaLes 2026
 -- Script de inicialización completa.
 -- - Borra TODOS los datos del torneo y predicciones.
--- - Deja solo el usuario Néstor Lesna como administrador.
+-- - Deja solo el usuario NR como administrador.
 -- - Recarga todos los equipos, partidos y configuración.
 --
 -- IMPORTANTE: Ejecutar en el SQL Editor de Supabase.
@@ -12,7 +12,7 @@
 
 -- ============================================================
 -- PASO 1: USUARIO ADMINISTRADOR
--- Conserva solo a Néstor Lesna y lo configura como admin activo.
+-- Conserva solo a NR y lo configura como admin activo.
 -- El resto de perfiles y predicciones se eliminan en cascada.
 -- ============================================================
 DO $$
@@ -22,10 +22,10 @@ BEGIN
   -- Buscar el UUID del admin por email en auth.users
   SELECT id INTO v_admin_id
   FROM auth.users
-  WHERE email = 'nestor.lesna@gmail.com';
+  WHERE email = 'nicolasrodriguez@anglo.edu.uy';
 
   IF v_admin_id IS NULL THEN
-    RAISE EXCEPTION 'Usuario nestor.lesna@gmail.com no encontrado en auth.users. Registrate primero en la app.';
+    RAISE EXCEPTION 'Usuario nicolasrodriguez@anglo.edu.uy no encontrado en auth.users. Registrate primero en la app.';
   END IF;
 
   -- Eliminar predicciones y bonus de todos los usuarios que no son el admin
@@ -45,7 +45,7 @@ BEGIN
   UPDATE profiles
   SET is_active = true,
       is_admin  = true,
-      display_name = COALESCE(NULLIF(display_name,''), 'Néstor Lesna')
+      display_name = COALESCE(NULLIF(display_name,''), 'Nicolás Rodriguez')
   WHERE id = v_admin_id;
 
   RAISE NOTICE 'Usuario admin configurado: % (id: %)',
