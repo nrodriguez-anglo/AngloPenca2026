@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { Loader2, HelpCircle, Target, Trophy, Zap, Clock, Shield, Star, Users } from 'lucide-react'
+import { Loader2, HelpCircle, Target, Trophy, Zap, Clock, Shield, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { fetchScoringConfig } from '../services/adminService'
 import { fetchBonusConfig } from '../services/bonusService'
