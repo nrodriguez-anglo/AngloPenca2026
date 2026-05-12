@@ -51,7 +51,7 @@
 
 @layer components {
   .card {
-    @apply bg-zinc-100 border border-border rounded-xl;
+    @apply bg-zinc-100 border border-border rounded-xl shadow-sm;
   }
 
   .btn-primary {

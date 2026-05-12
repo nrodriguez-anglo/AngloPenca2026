@@ -76,7 +76,7 @@ export function AuthPage() {
     if (error) {
       setError(traducirError(error.message))
     } else {
-      setSuccess('¡Registro exitoso! Tu cuenta está pendiente de aprobación por el administrador.')
+      setSuccess('¡Registro exitoso! Revisa tu email para confirmar tu cuenta.')
       setEmail(''); setPassword(''); setDisplayName(''); setUsername('')
       setCaptchaToken(null)
     }
@@ -143,7 +143,7 @@ export function AuthPage() {
                 className={`flex-1 py-1.5 rounded-md text-sm font-medium transition-colors ${
                   tab === t
                     ? 'bg-white text-zinc-800 shadow-sm'
-                    : 'text-zinc-100 hover:text-white'
+                    : 'text-zinc-100'
                 }`}
               >
                 {t === 'login' ? 'Ingresar' : 'Registrarse'}
@@ -219,7 +219,7 @@ export function AuthPage() {
               {tab === 'register' && (
                 <>
                   <div>
-                    <label className="block text-xs text-text-secondary mb-1.5">
+                    <label className="block text-xs text-zinc-700 mb-1.5">
                       Nombre para mostrar
                     </label>
 
@@ -235,7 +235,7 @@ export function AuthPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs text-text-secondary mb-1.5">
+                    <label className="block text-xs text-zinc-700 mb-1.5">
                       Nombre de usuario{' '}
                       <span className="text-text-muted">
                         (solo letras, números, _)
