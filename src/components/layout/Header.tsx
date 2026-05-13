@@ -49,6 +49,7 @@ export function Header() {
             <DeskNavLink to="/fixture">Fixture</DeskNavLink>
             <DeskNavLink to="/grupos">Grupos</DeskNavLink>
             <DeskNavLink to="/ranking">Ranking</DeskNavLink>
+            {user && <DeskNavLink to="/subgrupos">Subgrupos</DeskNavLink>}
             <DeskNavLink to="/cuadro">Cuadro</DeskNavLink>
             {user && <DeskNavLink to="/mis-predicciones">JUGAR</DeskNavLink>}
             {user && <DeskNavLink to="/mas-puntos">+ Puntos</DeskNavLink>}
@@ -143,6 +144,7 @@ export function Header() {
             <MobileNavLink to="/fixture">Fixture</MobileNavLink>
             <MobileNavLink to="/grupos">Grupos</MobileNavLink>
             <MobileNavLink to="/ranking">Ranking</MobileNavLink>
+            {user && <MobileNavLink to="/subgrupos">Subgrupos</MobileNavLink>}
             <MobileNavLink to="/cuadro">Cuadro</MobileNavLink>
             {user && <MobileNavLink to="/mis-predicciones">JUGAR</MobileNavLink>}
             {user && <MobileNavLink to="/mas-puntos">+ Puntos</MobileNavLink>}
