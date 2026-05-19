@@ -29,17 +29,17 @@ function ScoreInput({ value, onChange }: { value: number; onChange: (v: number) 
     <div className="flex items-center gap-2">
       <button
         type="button"
-        className="w-9 h-9 rounded-lg bg-surface-2 border border-border text-text-primary flex items-center justify-center hover:border-primary/50 transition-colors"
+        className="w-9 h-9 rounded-lg bg-surface-2  text-white flex items-center justify-center hover:border-primary transition-colors"
         onClick={() => onChange(Math.max(0, value - 1))}
       >
         <Minus size={14} />
       </button>
-      <span className="w-10 text-center text-2xl font-bold tabular-nums text-text-primary">
+      <span className="w-10 text-center text-2xl font-bold tabular-nums text-white">
         {value}
       </span>
       <button
         type="button"
-        className="w-9 h-9 rounded-lg bg-surface-2 border border-border text-text-primary flex items-center justify-center hover:border-primary/50 transition-colors"
+        className="w-9 h-9 rounded-lg bg-surface-2  text-white flex items-center justify-center hover:border-primary transition-colors"
         onClick={() => onChange(value + 1)}
       >
         <Plus size={14} />
@@ -139,10 +139,10 @@ export function PredictionModal({ match, existing, onClose }: Props) {
     >
       {!teamsConfirmed ? (
         <div className="py-6 text-center space-y-3">
-          <p className="text-text-secondary text-sm">
+          <p className="text-zinc-400 text-sm">
             Este partido aún no tiene los equipos confirmados.
           </p>
-          <p className="text-text-muted text-xs">
+          <p className="text-zinc-400 text-xs">
             Podrás ingresar tu predicción una vez que se definan los clasificados.
           </p>
         </div>
@@ -150,13 +150,13 @@ export function PredictionModal({ match, existing, onClose }: Props) {
       <div className="space-y-5">
         {/* 90 minutos */}
         <div>
-          <p className="text-[11px] text-text-muted uppercase tracking-wide mb-3 text-center">90 minutos</p>
+          <p className="text-[11px] text-zinc-400 uppercase tracking-wide mb-3 text-center">90 minutos</p>
           <div className="flex items-center justify-between gap-2">
             <div className="flex-1 flex flex-col items-center gap-2">
               <TeamFlag team={match.home_team} slotLabel={match.home_slot_label} size="sm" align="left" />
               <ScoreInput value={form.homeScore} onChange={v => setForm(f => ({ ...f, homeScore: v }))} />
             </div>
-            <span className="text-text-muted text-lg font-light mb-1">-</span>
+            <span className="text-zinc-400 text-lg font-light mb-1">-</span>
             <div className="flex-1 flex flex-col items-center gap-2">
               <TeamFlag team={match.away_team} slotLabel={match.away_slot_label} size="sm" align="right" />
               <ScoreInput value={form.awayScore} onChange={v => setForm(f => ({ ...f, awayScore: v }))} />
@@ -167,14 +167,14 @@ export function PredictionModal({ match, existing, onClose }: Props) {
         {/* Tiempo extra */}
         {isKnockout && (
           <div className={`transition-opacity ${showEt ? 'opacity-100' : 'opacity-30 pointer-events-none'}`}>
-            <p className="text-[11px] text-text-muted uppercase tracking-wide mb-3 text-center">
+            <p className="text-[11px] text-zinc-400 uppercase tracking-wide mb-3 text-center">
               Tiempo extra {!showEt && '(solo si hay empate a 90)'}
             </p>
             <div className="flex items-center justify-between gap-2">
               <div className="flex-1 flex justify-center">
                 <ScoreInput value={form.homeScoreEt} onChange={v => setForm(f => ({ ...f, homeScoreEt: v }))} />
               </div>
-              <span className="text-text-muted text-lg font-light">-</span>
+              <span className="text-zinc-400 text-lg font-light">-</span>
               <div className="flex-1 flex justify-center">
                 <ScoreInput value={form.awayScoreEt} onChange={v => setForm(f => ({ ...f, awayScoreEt: v }))} />
               </div>
@@ -190,7 +190,7 @@ export function PredictionModal({ match, existing, onClose }: Props) {
           ]
           return (
             <div className={`transition-opacity ${showPk ? 'opacity-100' : 'opacity-30 pointer-events-none'}`}>
-              <p className="text-[11px] text-text-muted uppercase tracking-wide mb-3 text-center">
+              <p className="text-[11px] text-zinc-400 uppercase tracking-wide mb-3 text-center">
                 Ganador en penales {!showPk && '(solo si hay empate en ET)'}
               </p>
               <div className="flex gap-2">
@@ -203,7 +203,7 @@ export function PredictionModal({ match, existing, onClose }: Props) {
                       type="button"
                       className={`flex-1 py-2 px-3 rounded-lg border text-sm font-medium transition-colors ${
                         btnDisabled
-                          ? 'border-border bg-surface-2 text-text-muted cursor-not-allowed opacity-40'
+                          ? 'border-border bg-surface-2 text-zinc-400 cursor-not-allowed opacity-40'
                           : isSelected
                             ? 'border-primary bg-primary/20 text-primary'
                             : 'border-border bg-surface-2 text-text-secondary hover:border-primary/40'
@@ -223,7 +223,7 @@ export function PredictionModal({ match, existing, onClose }: Props) {
         {/* Actions */}
         <div className="flex gap-2 pt-1">
           <button
-            className="btn-primary flex-1"
+            className="font-medium px-4 py-2 rounded-lg transition-colors hover:text-primary bg-white text-black flex-1"
             onClick={() => save()}
             disabled={saving || removing}
           >
@@ -231,7 +231,7 @@ export function PredictionModal({ match, existing, onClose }: Props) {
           </button>
           {existing && (
             <button
-              className="btn-ghost px-3 border border-border text-error hover:bg-error/10"
+              className="px-3 py-2 rounded-lg transition-colors px-3 bg-primary text-white hover:bg-black"
               onClick={() => remove()}
               disabled={saving || removing}
             >

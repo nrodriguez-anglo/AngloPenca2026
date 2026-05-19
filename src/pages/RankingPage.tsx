@@ -1,14 +1,14 @@
-import { Loader2, Trophy, Target, Check } from 'lucide-react'
+import { Loader2, Target, Check } from 'lucide-react'
 import { useLeaderboard } from '../hooks/useLeaderboard'
 import { useAuth } from '../hooks/useAuth'
 import type { LeaderboardEntry } from '../types'
 
 function MedalOrRank({ rank }: { rank: number }) {
-  if (rank === 1) return <span className="text-accent text-lg">🥇</span>
-  if (rank === 2) return <span className="text-accent text-lg">🥈</span>
-  if (rank === 3) return <span className="text-accent text-lg">🥉</span>
+  if (rank === 1) return <span className="text-white text-lg">🥇</span>
+  if (rank === 2) return <span className="text-white text-lg">🥈</span>
+  if (rank === 3) return <span className="text-white text-lg">🥉</span>
   return (
-    <span className="text-sm font-bold tabular-nums text-text-muted w-6 text-center">
+    <span className="text-sm font-bold tabular-nums text-white w-6 text-center">
       {rank}
     </span>
   )
@@ -26,8 +26,8 @@ function Avatar({ entry }: { entry: LeaderboardEntry }) {
     )
   }
   return (
-    <div className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-      <span className="text-primary font-bold text-sm">{initials}</span>
+    <div className="w-9 h-9 rounded-full bg-primary/50 flex items-center justify-center flex-shrink-0">
+      <span className="text-white font-bold text-sm">{initials}</span>
     </div>
   )
 }
@@ -42,7 +42,7 @@ function LeaderboardRow({
   return (
     <div
       className={`card p-3 flex items-center gap-3 transition-colors ${
-        isMe ? 'border-primary/40 bg-primary/5' : ''
+        isMe ? 'border-white border bg-black' : ''
       }`}
     >
       {/* Rank */}
@@ -56,7 +56,7 @@ function LeaderboardRow({
       {/* Name + stats */}
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-1.5 flex-wrap">
-          <span className="text-sm font-medium text-text-primary truncate">
+          <span className="text-sm font-medium text-white truncate">
             {entry.display_name}
           </span>
           {isMe && (
@@ -64,12 +64,12 @@ function LeaderboardRow({
           )}
         </div>
         <div className="flex items-center gap-3 mt-0.5">
-          <span className="flex items-center gap-1 text-[11px] text-text-muted">
-            <Check size={11} className="text-primary" />
+          <span className="flex items-center gap-1 text-[11px] text-zinc-200">
+            <Check size={11} className="text-zinc-300" />
             {entry.predictions_count} pred.
           </span>
-          <span className="flex items-center gap-1 text-[11px] text-text-muted">
-            <Target size={11} className="text-accent" />
+          <span className="flex items-center gap-1 text-[11px] text-zinc-200">
+            <Target size={11} className="text-zinc-300" />
             {entry.exact_scores} exactos
           </span>
         </div>
@@ -80,7 +80,7 @@ function LeaderboardRow({
         <p className="text-xl font-bold tabular-nums text-primary leading-none">
           {entry.total_points}
         </p>
-        <p className="text-[10px] text-text-muted mt-0.5">pts</p>
+        <p className="text-[10px] text-zinc-200 mt-0.5">pts</p>
       </div>
     </div>
   )
@@ -94,14 +94,14 @@ function TopThree({ entries, myId }: { entries: LeaderboardEntry[]; myId?: strin
     return (
       <div className="flex flex-col items-center gap-2">
         <Avatar entry={entry} />
-        <p className={`text-xs font-medium text-center truncate max-w-[80px] ${isMe ? 'text-primary' : 'text-text-primary'}`}>
+        <p className={`text-xs font-medium text-center truncate max-w-[80px] ${isMe ? 'text-white' : 'text-white/90'}`}>
           {entry.display_name}
         </p>
         <div
           className={`w-full flex flex-col items-center justify-end rounded-t-lg ${height} ${
             entry.rank === 1
-              ? 'bg-accent/20 border border-accent/30'
-              : 'bg-surface-2 border border-border'
+              ? 'bg-black border border-white'
+              : 'bg-black'
           }`}
         >
           <MedalOrRank rank={entry.rank} />
@@ -143,8 +143,7 @@ export function RankingPage() {
   return (
     <div>
       <div className="flex items-center gap-2 mb-5">
-        <Trophy size={20} className="text-accent" />
-        <h1 className="text-xl font-bold text-text-primary">Ranking</h1>
+        <h1 className="text-xl font-bold italic text-white">Ranking</h1>
       </div>
 
       {isLoading && (
@@ -161,7 +160,6 @@ export function RankingPage() {
 
       {!isLoading && !error && entries.length === 0 && (
         <div className="card p-8 text-center">
-          <Trophy size={32} className="text-text-muted mx-auto mb-3" />
           <p className="text-text-muted text-sm">
             Aún no hay puntos registrados. ¡El torneo empieza el 11 de junio!
           </p>
@@ -176,7 +174,7 @@ export function RankingPage() {
           {/* Mi posición fijada (si no estoy en top 3 y estoy logueado) */}
           {myEntry && myEntry.rank > 3 && (
             <div className="mb-3">
-              <p className="text-xs text-text-muted uppercase tracking-wide mb-1.5">
+              <p className="text-xs text-white uppercase tracking-wide mb-1.5">
                 Tu posición
               </p>
               <LeaderboardRow entry={myEntry} isMe />
@@ -186,7 +184,7 @@ export function RankingPage() {
           {/* Lista completa */}
           {hasMore && (
             <div className="space-y-2">
-              <p className="text-xs text-text-muted uppercase tracking-wide mb-1.5">
+              <p className="text-xs text-white uppercase tracking-wide mb-1.5">
                 Tabla completa
               </p>
               {entries.map(entry => (

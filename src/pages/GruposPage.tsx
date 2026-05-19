@@ -28,7 +28,7 @@ export function GruposPage() {
 
   return (
     <div>
-      <h1 className="text-xl font-bold text-text-primary mb-4">Grupos</h1>
+      <h1 className="text-xl font-bold italic text-white mb-4">Grupos</h1>
 
       {/* Selector de grupo */}
       <div className="flex gap-1 overflow-x-auto pb-1 mb-5 scrollbar-hide -mx-4 px-4">
@@ -36,8 +36,8 @@ export function GruposPage() {
           onClick={() => setSelected(null)}
           className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
             !selected
-              ? 'bg-primary text-white'
-              : 'bg-zinc-800 text-white hover:text-text-primary'
+              ? 'bg-white text-primary'
+              : 'bg-black text-white hover:text-primary'
           }`}
         >
           Todos
@@ -48,8 +48,8 @@ export function GruposPage() {
             onClick={() => setSelected(selected === g ? null : g)}
             className={`flex-shrink-0 w-9 h-8 rounded-full text-xs font-bold transition-colors ${
               selected === g
-                ? 'bg-primary text-white'
-                : 'bg-zinc-800 text-white hover:bg-primary'
+                ? 'bg-white text-primary'
+                : 'bg-black text-white hover:bg-white hover:text-primary'
             }`}
           >
             {g}
@@ -59,12 +59,12 @@ export function GruposPage() {
 
       {isLoading && (
         <div className="flex justify-center py-16">
-          <Loader2 className="animate-spin text-primary" size={28} />
+          <Loader2 className="animate-spin text-white" size={28} />
         </div>
       )}
 
       {error && (
-        <div className="card p-4 text-error text-sm text-center">
+        <div className="card p-4 text-primary text-sm text-center">
           Error cargando posiciones. Verificá la conexión a Supabase.
         </div>
       )}
@@ -74,17 +74,17 @@ export function GruposPage() {
           {visibleGroups.map((g) => {
             const rows = groupMap.get(g) ?? []
             return (
-              <div key={g} className="card p-4">
+              <div key={g} className="card p-4 border-none">
                 <div className="flex items-center justify-between mb-3">
-                  <h2 className="text-sm font-bold text-text-primary flex items-center gap-2">
-                    <span className="w-6 h-6 rounded bg-primary/20 text-primary text-xs font-bold flex items-center justify-center">
+                  <h2 className="text-sm font-bold text-white flex items-center gap-2">
+                    <span className="w-6 h-6 rounded bg-white text-primary text-xs font-bold flex items-center justify-center">
                       {g}
                     </span>
                     Grupo {g}
                   </h2>
                   <button
                     onClick={() => navigate(`/grupos/${g}`)}
-                    className="text-xs text-primary hover:underline"
+                    className="text-xs text-zinc-100 hover:underline"
                   >
                     Ver detalle →
                   </button>

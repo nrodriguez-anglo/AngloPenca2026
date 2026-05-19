@@ -100,7 +100,7 @@ export function FixturePage() {
   return (
     <div>
       {/* Título */}
-      <h1 className="text-xl font-bold text-text-primary mb-4">Fixture</h1>
+      <h1 className="text-xl italic font-bold text-white mb-4">Fixture</h1>
 
       {/* Tabs de fase — scrollable horizontal en mobile */}
       <div className="flex gap-1 overflow-x-auto pb-1 mb-3 scrollbar-hide -mx-4 px-4">
@@ -115,8 +115,8 @@ export function FixturePage() {
             }}
             className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
               phaseOrder === tab.phaseOrder
-                ? 'bg-primary text-white'
-                : 'bg-zinc-800 text-white hover:bg-primary hover:text-white'
+                ? 'bg-white text-primary'
+                : 'bg-black text-white hover:bg-white hover:text-primary'
             }`}
           >
             {tab.label}
@@ -131,8 +131,8 @@ export function FixturePage() {
             onClick={() => setGroupName(undefined)}
             className={`flex-shrink-0 px-2.5 py-1 rounded text-xs font-medium transition-colors ${
               !groupName
-                ? 'bg-zinc-800 text-white'
-                : 'text-text-muted hover:text-text-secondary'
+                ? 'bg-white text-primary'
+                : 'bg-black text-white hover:bg-white hover:text-primary'
             }`}
           >
             Todos
@@ -144,10 +144,10 @@ export function FixturePage() {
                 setGroupName(g)
                 setPhaseOrder(1)
               }}
-              className={`flex-shrink-0 px-2 h-7 rounded text-xs font-bold transition-colors ${
+              className={`flex-shrink-0 px-2 mt-1 h-4 rounded text-xs font-bold transition-colors ${
                 groupName === g
-                  ? 'bg-primary text-white'
-                  : 'text-zinc-600 hover:text-white hover:bg-primary'
+                  ? 'bg-white text-primary'
+                  : 'bg-black text-white hover:bg-white hover:text-primary'
               }`}
             >
               G. {g}
@@ -159,7 +159,7 @@ export function FixturePage() {
       {/* Estado de carga */}
       {isLoading && (
         <div className="flex justify-center py-16">
-          <Loader2 className="animate-spin text-primary" size={28} />
+          <Loader2 className="animate-spin text-white" size={28} />
         </div>
       )}
 
@@ -171,27 +171,33 @@ export function FixturePage() {
 
       {/* Lista de partidos agrupados por fecha */}
       {!isLoading && !error && (
-        <div className="space-y-6">
-          {groupedByDate.length === 0 && (
-            <p className="text-zinc-800 text-sm text-center py-8">
-              No hay partidos para mostrar.
-            </p>
-          )}
+  <div className=" space-y-6 ">
+    {groupedByDate.length === 0 && (
+      <p className="text-zinc-300 text-sm text-center py-8">
+        No hay partidos para mostrar.
+      </p>
+    )}
 
-          {groupedByDate.map(({ dateKey, label, matches: dayMatches }) => (
-            <section key={dateKey}>
-              <h2 className="text-xs font-semibold text-zinc-600 uppercase tracking-widest mb-2 capitalize">
-                {label}
-              </h2>
-              <div className="space-y-3">
-                {dayMatches.map((match) => (
-                  <MatchCard key={match.id} match={match} onStadiumClick={handleStadiumClick} onPredictionsClick={handlePredictionsClick} />
-                ))}
-              </div>
-            </section>
+    {groupedByDate.map(({ dateKey, label, matches: dayMatches }) => (
+      <section key={dateKey}>
+        <h2 className="text-xs italic font-semibold text-white tracking-widest mb-2 capitalize">
+          {label}
+        </h2>
+
+        <div className="space-y-3">
+          {dayMatches.map((match) => (
+            <MatchCard
+              key={match.id}
+              match={match}
+              onStadiumClick={handleStadiumClick}
+              onPredictionsClick={handlePredictionsClick}
+            />
           ))}
         </div>
-      )}
+      </section>
+    ))}
+  </div>
+)}
 
       <StadiumModal
         open={stadiumModalOpen}

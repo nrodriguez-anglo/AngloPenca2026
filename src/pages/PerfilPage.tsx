@@ -83,7 +83,7 @@ function PerfilContent() {
 
   return (
     <div className="max-w-md mx-auto">
-      <h1 className="text-xl font-bold text-text-primary mb-6">Mi perfil</h1>
+      <h1 className="text-xl font-bold text-white italic mb-6">Mi perfil</h1>
 
       {/* Avatar */}
       <div className="card p-6 mb-4">
@@ -105,7 +105,7 @@ function PerfilContent() {
             <button
               onClick={() => fileRef.current?.click()}
               disabled={uploadingAvatar}
-              className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-lg hover:bg-primary-hover transition-colors"
+              className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-black flex items-center justify-center shadow-lg hover:bg-primary border transition-colors"
             >
               {uploadingAvatar
                 ? <Loader2 size={14} className="animate-spin text-white" />
@@ -122,25 +122,25 @@ function PerfilContent() {
           </div>
 
           <div>
-            <p className="font-semibold text-text-primary">{profile.display_name}</p>
-            <p className="text-sm text-text-muted">@{profile.username}</p>
+            <p className="font-semibold text-white">{profile.display_name}</p>
+            <p className="text-sm text-zinc-300">@{profile.username}</p>
             {profile.is_admin && (
               <span className="badge-accent text-[10px] mt-1">Admin</span>
             )}
           </div>
         </div>
-        <p className="text-xs text-text-muted mt-3">
+        <p className="text-xs text-zinc-300 mt-3">
           Formatos: JPG, PNG, WEBP · Máximo 2 MB
         </p>
       </div>
 
       {/* Datos editables */}
       <div className="card p-6 mb-4">
-        <h2 className="text-sm font-semibold text-zinc-800 mb-4">Información</h2>
+        <h2 className="text-sm font-semibold text-zinc-400 mb-4">Información</h2>
 
         <div className="space-y-4">
           <div>
-            <label className="block text-xs text-zinc-600 mb-1.5">Nombre para mostrar</label>
+            <label className="block text-xs text-zinc-300 mb-1.5">Nombre para mostrar</label>
             <input
               type="text"
               value={displayName}
@@ -151,7 +151,7 @@ function PerfilContent() {
           </div>
 
           <div>
-            <label className="block text-xs text-zinc-600 mb-1.5">Usuario</label>
+            <label className="block text-xs text-zinc-300 mb-1.5">Usuario</label>
             <input
               type="text"
               value={`@${profile.username}`}
@@ -161,7 +161,7 @@ function PerfilContent() {
           </div>
 
           <div>
-            <label className="block text-xs text-zinc-600 mb-1.5">Email</label>
+            <label className="block text-xs text-zinc-300 mb-1.5">Email</label>
             <input
               type="email"
               value={user.email ?? ''}
@@ -185,13 +185,13 @@ function PerfilContent() {
 
       {/* Seguridad */}
       <div className="card p-6 mb-4">
-        <h2 className="text-sm font-semibold text-zinc-800 mb-4 flex items-center gap-2">
+        <h2 className="text-sm font-semibold text-zinc-400 mb-4 flex items-center gap-2">
           <Lock size={14} /> Seguridad
         </h2>
 
         <div className="space-y-4">
           <div>
-            <label className="block text-xs text-zinc-600 mb-1.5">Nueva contraseña</label>
+            <label className="block text-xs text-zinc-300 mb-1.5">Nueva contraseña</label>
             <div className="relative">
               <input
                 type={showPass ? 'text' : 'password'}
@@ -203,7 +203,7 @@ function PerfilContent() {
               <button
                 type="button"
                 onClick={() => setShowPass(v => !v)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-secondary"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-300 hover:text-text-secondary"
               >
                 {showPass ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
@@ -226,7 +226,7 @@ function PerfilContent() {
       {/* Estado de cuenta */}
       <div className="card p-4">
         <div className="flex items-center justify-between">
-          <span className="text-xs text-text-muted">Estado de cuenta</span>
+          <span className="text-xs text-zinc-300">Estado de cuenta</span>
           {profile.is_active
             ? <span className="badge-primary">Activa</span>
             : <span className="badge bg-warning/20 text-warning text-xs px-2 py-0.5 rounded-full">Pendiente</span>

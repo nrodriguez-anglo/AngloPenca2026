@@ -16,7 +16,7 @@ const UNIT    = 88    // px height per R32 slot
 const CARD_W  = 144   // px width of each match card
 const CONN_W  = 20    // px width of SVG connector
 const TOTAL_H = 16 * UNIT  // 1024px — fits all 16 R32 matches
-const STROKE  = '#2E3A4D'
+const STROKE  = '#FFFFFF'
 const MID     = CONN_W / 2
 
 // ── Match orderings (top → bottom) ───────────────────────────────────────────
@@ -100,19 +100,19 @@ function TeamRow({
     : null
 
   return (
-    <div className={`flex items-center gap-1.5 px-2 py-[5px] ${winner ? 'bg-primary/10' : ''}`}>
+    <div className={`flex items-center gap-1.5 px-2 py-[5px] ${winner ? 'bg-primary/80' : ''}`}>
       {team?.flag_url ? (
         <img src={team.flag_url} alt="" className="w-5 h-3.5 rounded-sm object-cover flex-shrink-0" loading="lazy" />
       ) : (
         <div className="w-5 h-3.5 rounded-sm bg-border flex-shrink-0" />
       )}
       <span className={`text-[11px] flex-1 font-medium truncate ${
-        winner ? 'text-text-primary' : loser ? 'text-text-muted' : 'text-text-secondary'
+        winner ? 'text-white' : loser ? 'text-zinc-400' : 'text-zinc-300'
       }`}>
         {label}
       </span>
       {scoreStr !== null && (
-        <span className={`text-xs font-bold tabular-nums ${winner ? 'text-primary' : 'text-text-muted'}`}>
+        <span className={`text-xs font-bold tabular-nums ${winner ? 'text-white' : 'text-zinc-400'}`}>
           {scoreStr}{suffix ?? ''}
         </span>
       )}
@@ -145,9 +145,9 @@ function MatchCard({ matchNum, matchMap }: { matchNum: number; matchMap: MatchMa
   const awaySuffix = pkDecided && awayWin ? 'P' : undefined
 
   return (
-    <div className="rounded-lg overflow-hidden bg-surface border border-border" style={{ width: CARD_W }}>
-      <div className="px-2 py-[2px] bg-zinc-700 border-b border-border">
-        <span className="text-[9px] text-zinc-200 font-medium">M{matchNum}</span>
+    <div className="rounded-lg overflow-hidden bg-black border border-border" style={{ width: CARD_W }}>
+      <div className="px-2 py-[1px] bg-white border-b border-border">
+        <span className="text-[9px] text-black font-medium">M{matchNum}</span>
       </div>
       <TeamRow team={home} label={homeLabel} score={homeScore} etTotal={homeEtTotal} suffix={homeSuffix} winner={homeWin} loser={awayWin} />
       <div className="h-px bg-border" />
@@ -188,7 +188,7 @@ function Connector({ paths }: { paths: string[] }) {
 
 // ── Phase header row ──────────────────────────────────────────────────────────
 const PHASE_LABELS = ['Dieciseis.', 'Octavos', 'Cuartos', 'Semis', 'Final']
-const hCls = 'text-[10px] font-semibold text-text-muted uppercase tracking-wide text-center py-2'
+const hCls = 'text-[10px] font-semibold text-zinc-300 uppercase tracking-wide text-center py-2'
 
 function PhaseHeaders() {
   const col = { width: CARD_W, flexShrink: 0 } as const
@@ -313,20 +313,20 @@ export function BracketPage() {
     <div className="px-4 py-6 space-y-4">
       {/* Header */}
       <div>
-        <h1 className="text-xl font-bold text-text-primary">Cuadro</h1>
-        <p className="text-xs text-text-muted mt-1">
+        <h1 className="text-xl font-bold text-white italic">Cuadro</h1>
+        <p className="text-xs text-zinc-300 mt-1">
           Fase eliminatoria · Dieciseisavos → Final
         </p>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 bg-surface rounded-xl p-1 border border-border">
+      <div className="flex gap-1 bg-black rounded-xl p-2">
         <button
           onClick={() => setActiveTab('torneo')}
           className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-sm font-medium transition-colors ${
             activeTab === 'torneo'
-              ? 'bg-primary text-white'
-              : 'text-zinc-700 hover:text-primary'
+              ? 'bg-white text-primary'
+              : 'text-zinc-300 hover:text-white'
           }`}
         >
           <Trophy size={14} />
@@ -336,8 +336,8 @@ export function BracketPage() {
           onClick={() => setActiveTab('mio')}
           className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-sm font-medium transition-colors ${
             activeTab === 'mio'
-              ? 'bg-primary text-white'
-              : 'text-zinc-700 hover:text-primary'
+              ? 'bg-white text-primary'
+              : 'text-zinc-300 hover:text-white'
           }`}
         >
           <User size={14} />
@@ -348,7 +348,7 @@ export function BracketPage() {
       {/* Content */}
       {isLoading ? (
         <div className="flex justify-center py-20">
-          <Loader2 className="animate-spin text-primary" size={28} />
+          <Loader2 className="animate-spin text-white" size={28} />
         </div>
       ) : activeTab === 'torneo' ? (
         <BracketLayout matchMap={matchMap} />

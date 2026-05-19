@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
-import { Loader2, Users, Trophy, Power, PowerOff, Trash2 } from 'lucide-react'
+import { Loader2, Trophy, Power, PowerOff, Trash2 } from 'lucide-react'
 import { toast } from 'sonner'
 import { useAuth } from '../hooks/useAuth'
 import {
@@ -50,8 +50,7 @@ export function SubgruposPage() {
   if (!user || !isActive) {
     return (
       <div className="card p-8 text-center">
-        <Users size={32} className="text-text-muted mx-auto mb-3" />
-        <p className="text-text-muted text-sm">
+        <p className="text-zinc-400 text-sm">
           Necesitás estar logueado y con cuenta activa para ver subgrupos.
         </p>
       </div>
@@ -62,27 +61,25 @@ export function SubgruposPage() {
     <div>
       <div className="flex items-center justify-between mb-5">
         <div className="flex items-center gap-2">
-          <Users size={20} className="text-primary" />
-          <h1 className="text-xl font-bold text-text-primary">Subgrupos</h1>
+          <h1 className="text-xl font-bold italic text-white">Subgrupos</h1>
         </div>
       </div>
 
       {mySubgrupoCount >= 3 && (
-        <p className="text-xs text-text-muted mb-3">
+        <p className="text-xs text-zinc-400 mb-3">
           Llegaste al límite de 3 subgrupos como creador.
         </p>
       )}
 
       {isLoading && (
         <div className="flex justify-center py-16">
-          <Loader2 className="animate-spin text-primary" size={28} />
+          <Loader2 className="animate-spin text-white" size={28} />
         </div>
       )}
 
       {!isLoading && mySubgrupos.length === 0 && (
         <div className="card p-8 text-center">
-          <Users size={32} className="text-text-muted mx-auto mb-3" />
-          <p className="text-text-muted text-sm mb-4">
+          <p className="text-zinc-400 text-sm mb-4">
             No pertenecés a ningún subgrupo.
           </p>
         </div>
@@ -101,7 +98,7 @@ export function SubgruposPage() {
                 <div className="flex items-center gap-2">
                   <Link
                     to={`/subgrupos/${sg.id}`}
-                    className="text-sm font-medium text-text-primary hover:text-primary transition-colors truncate block"
+                    className="text-sm font-medium text-white hover:text-primary transition-colors truncate block"
                   >
                     {sg.name}
                   </Link>
@@ -111,7 +108,7 @@ export function SubgruposPage() {
                     </span>
                   )}
                 </div>
-                <p className="text-xs text-text-muted">
+                <p className="text-xs text-zinc-400">
                   {sg.creator_id === user.id ? 'Tu subgrupo' : 'Te invitaron'}
                 </p>
               </div>
@@ -132,8 +129,8 @@ export function SubgruposPage() {
                     title={sg.is_active ? 'Deshabilitar subgrupo' : 'Habilitar subgrupo'}
                     className={`p-2 rounded-lg transition-colors flex-shrink-0 ${
                       sg.is_active
-                        ? 'text-text-muted hover:text-error hover:bg-error/10'
-                        : 'text-text-muted hover:text-primary hover:bg-primary/10'
+                        ? 'text-zinc-400 hover:text-error hover:bg-error/10'
+                        : 'text-zinc-400 hover:text-primary hover:bg-primary/10'
                     }`}
                   >
                     {sg.is_active ? <PowerOff size={16} /> : <Power size={16} />}
@@ -145,7 +142,7 @@ export function SubgruposPage() {
                       }
                     }}
                     title="Eliminar subgrupo"
-                    className="p-2 rounded-lg text-text-muted hover:text-error hover:bg-error/10 transition-colors flex-shrink-0"
+                    className="p-2 rounded-lg text-zinc-400 hover:text-error hover:bg-error/10 transition-colors flex-shrink-0"
                   >
                     <Trash2 size={16} />
                   </button>

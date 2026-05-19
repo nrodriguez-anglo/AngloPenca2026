@@ -36,14 +36,14 @@ export function TeamFlag({ team, slotLabel, size = 'md', align = 'left', abbrev 
         />
       ) : (
         <div className={`${s.flag} rounded-sm bg-border flex items-center justify-center flex-shrink-0`}>
-          <span className="text-zinc-800 text-[9px] font-bold">
+          <span className="text-zinc-200 text-[9px] font-bold">
             {team?.abbreviation ?? '?'}
           </span>
         </div>
       )}
 
       {/* Nombre */}
-      <span className={`${s.text} text-zinc-800 leading-tight ${isRight ? 'text-right' : ''}`}>
+      <span className={`${s.text} text-zinc-100 leading-tight ${isRight ? 'text-right' : ''}`}>
         {name}
       </span>
     </div>

@@ -72,7 +72,7 @@ export function EquipoPage() {
       {/* Breadcrumb */}
       <button
         onClick={() => navigate(-1)}
-        className="flex items-center gap-1.5 text-text-muted hover:text-text-primary text-sm mb-4 transition-colors"
+        className="flex items-center gap-1.5 text-white  text-sm mb-4 transition-colors"
       >
         <ArrowLeft size={15} />
         Atrás
@@ -90,24 +90,24 @@ export function EquipoPage() {
             />
           ) : (
             <div className="w-16 h-12 rounded bg-border flex items-center justify-center flex-shrink-0">
-              <Shield size={20} className="text-text-muted" />
+              <Shield size={20} className="text-white" />
             </div>
           )}
 
           <div className="flex-1 min-w-0">
-            <h1 className="text-xl font-bold text-text-primary leading-tight">
+            <h1 className="text-xl font-bold text-white leading-tight">
               {displayName}
             </h1>
             {!team.is_confirmed && (
-              <span className="badge bg-border text-text-muted text-[10px] mt-1">
+              <span className="badge bg-border text-white text-[10px] mt-1">
                 Por confirmar
               </span>
             )}
             <div className="flex items-center gap-3 mt-1">
-              <span className="text-xs text-text-muted font-mono">{team.abbreviation}</span>
+              <span className="text-xs text-zinc-100 font-mono">{team.abbreviation}</span>
               <Link
                 to={`/grupos/${team.group.name}`}
-                className="text-xs text-primary hover:underline"
+                className="text-xs text-zinc-200 hover:underline"
               >
                 Grupo {team.group.name}
               </Link>
@@ -141,7 +141,7 @@ export function EquipoPage() {
       </div>
 
       {/* Partidos */}
-      <h2 className="text-xs font-semibold text-text-muted uppercase tracking-wide mb-3">
+      <h2 className="text-xs font-semibold text-white uppercase tracking-wide mb-3">
         Partidos
       </h2>
 

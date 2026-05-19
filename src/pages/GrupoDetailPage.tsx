@@ -22,7 +22,7 @@ export function GrupoDetailPage() {
   if (!isValid) {
     return (
       <div className="text-center py-16">
-        <p className="text-text-muted mb-4">Grupo "{grupo}" no existe.</p>
+        <p className="text-white mb-4">Grupo "{grupo}" no existe.</p>
         <Link to="/grupos" className="btn-primary text-sm">
           Ver todos los grupos
         </Link>
@@ -35,22 +35,22 @@ export function GrupoDetailPage() {
       {/* Breadcrumb */}
       <button
         onClick={() => navigate('/grupos')}
-        className="flex items-center gap-1.5 text-text-muted hover:text-text-primary text-sm mb-4 transition-colors"
+        className="flex items-center gap-1.5 text-white text-sm mb-4 transition-colors"
       >
         <ArrowLeft size={15} />
         Grupos
       </button>
 
       <div className="flex items-center gap-3 mb-5">
-        <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
-          <span className="text-lg font-bold text-primary">{groupName}</span>
+        <div className="w-10 h-10 rounded-xl bg-black flex items-center justify-center">
+          <span className="text-lg font-bold text-white">{groupName}</span>
         </div>
-        <h1 className="text-xl font-bold text-zinc-800">Grupo {groupName}</h1>
+        <h1 className="text-xl font-bold text-white">Grupo {groupName}</h1>
       </div>
 
       {/* Tabla de posiciones */}
-      <section className="group-card p-4 mb-5">
-        <h2 className="text-xs font-semibold text-text-muted uppercase tracking-wide mb-3">
+      <section className="rounded-xl bg-black p-4 mb-5">
+        <h2 className="text-xs font-semibold text-white uppercase tracking-wide mb-3">
           Posiciones
         </h2>
         {loadingStandings ? (
@@ -68,7 +68,7 @@ export function GrupoDetailPage() {
 
       {/* Partidos del grupo */}
       <section>
-        <h2 className="text-xs font-semibold text-text-muted uppercase tracking-wide mb-3">
+        <h2 className="text-xs font-semibold text-white uppercase tracking-wide mb-3">
           Partidos
         </h2>
         {loadingMatches ? (

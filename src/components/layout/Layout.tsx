@@ -4,6 +4,8 @@ import { Header } from './Header'
 import { Footer } from './Footer'
 import { leonConfigs } from '../../utils/leons'
 
+import backgroundImage from '../../assets/bg.png'
+
 export function Layout() {
   const location = useLocation()
 
@@ -13,9 +15,23 @@ export function Layout() {
     )?.[1] || null
 
   return (
-    <div className="min-h-screen bg-background text-text-primary flex flex-col">
+    <div className="min-h-screen bg-background text-text-primary flex flex-col relative overflow-hidden">
+      {/* Background */}
+      <div
+        className="
+          fixed inset-0 z-0
+          bg-center bg-cover bg-no-repeat
+          opacity-[1]
+        "
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}
+        aria-hidden="true"
+      />
+
       <Header />
 
+      {/* Leones */}
       {leonConfig && (
         <div
           className={`
@@ -29,21 +45,23 @@ export function Layout() {
             src={leonConfig.image}
             alt=""
             className={`
-              object-contain opacity-[0.1] select-none
+              object-contain opacity-[1] select-none
               ${leonConfig.imageClassName}
             `}
           />
         </div>
       )}
 
-      <main className="flex-1 pb-20 md:pb-0">
+      <main className="relative z-20 flex-1 pb-20 md:pb-0">
         <div className="max-w-5xl mx-auto px-4 py-4">
           <Outlet />
         </div>
       </main>
 
-      <BottomNav />
-      <Footer />
+      <div className="relative z-20">
+  <BottomNav />
+  <Footer />
+</div>
     </div>
   )
 }

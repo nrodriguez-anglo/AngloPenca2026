@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
-import { ChevronDown, ChevronUp, Lock, Trophy, Star, CheckCircle2, Circle } from 'lucide-react'
+import { ChevronDown, ChevronUp, Lock, Trophy, CheckCircle2, Circle } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
 import {
   fetchBonusConfig, fetchBonusPrediction, fetchBonusPoints,
@@ -54,16 +54,16 @@ function TeamSelect({
             {selected.flag_url
               ? <img src={selected.flag_url} alt={selected.abbreviation} className="w-5 h-4 rounded-sm object-cover flex-shrink-0" />
               : <div className="w-5 h-4 rounded-sm bg-border flex items-center justify-center flex-shrink-0">
-                  <span className="text-[8px] text-text-muted font-bold">{selected.abbreviation}</span>
+                  <span className="text-[8px] text-black font-bold">{selected.abbreviation}</span>
                 </div>
             }
-            <span className="text-sm text-text-primary truncate flex-1">{selected.name}</span>
-            <span className="text-xs text-text-muted flex-shrink-0">{selected.group_name}</span>
+            <span className="text-sm text-black truncate flex-1">{selected.name}</span>
+            <span className="text-xs text-black flex-shrink-0">{selected.group_name}</span>
           </>
         ) : (
-          <span className="text-sm text-text-muted flex-1">{placeholder}</span>
+          <span className="text-sm text-zinc-600 flex-1">{placeholder}</span>
         )}
-        <ChevronDown size={14} className="text-text-muted flex-shrink-0 ml-1" />
+        <ChevronDown size={14} className="text-zinc-300 flex-shrink-0 ml-1" />
       </button>
 
       {open && (
@@ -72,7 +72,7 @@ function TeamSelect({
             <button
               type="button"
               onClick={() => select(null)}
-              className="w-full flex items-center px-3 py-2 text-sm text-text-muted hover:bg-border/40 transition-colors"
+              className="w-full flex items-center px-3 py-2 text-sm text-black transition-colors"
             >
               — sin respuesta —
             </button>
@@ -81,16 +81,16 @@ function TeamSelect({
                 key={t.id}
                 type="button"
                 onClick={() => select(t.id)}
-                className={`w-full flex items-center gap-2 px-3 py-2 hover:bg-border/40 transition-colors ${t.id === value ? 'bg-primary/10' : ''}`}
+                className={`w-full flex items-center gap-2 px-3 py-2 hover:bg-border/40 transition-colors ${t.id === value ? 'bg-black/30' : ''}`}
               >
                 {t.flag_url
                   ? <img src={t.flag_url} alt={t.abbreviation} className="w-5 h-4 rounded-sm object-cover flex-shrink-0" />
                   : <div className="w-5 h-4 rounded-sm bg-border flex items-center justify-center flex-shrink-0">
-                      <span className="text-[8px] text-text-muted font-bold">{t.abbreviation}</span>
+                      <span className="text-[8px] text-black font-bold">{t.abbreviation}</span>
                     </div>
                 }
-                <span className="text-sm text-text-primary flex-1 text-left truncate">{t.name}</span>
-                <span className="text-xs text-text-muted flex-shrink-0">{t.group_name}</span>
+                <span className="text-sm text-black flex-1 text-left truncate">{t.name}</span>
+                <span className="text-xs text-black flex-shrink-0">{t.group_name}</span>
               </button>
             ))}
           </div>
@@ -126,32 +126,32 @@ function BonusSection({
         <div className="flex items-center gap-3 min-w-0">
           <span className="text-lg flex-shrink-0">{icon}</span>
           <div className="text-left min-w-0">
-            <p className="text-sm font-semibold text-text-primary truncate">{title}</p>
-            <p className="text-[11px] text-text-muted">{pointsAvail}</p>
+            <p className="text-sm font-semibold text-white truncate">{title}</p>
+            <p className="text-[11px] text-zinc-300">{pointsAvail}</p>
           </div>
         </div>
         <div className="flex items-center gap-2 ml-3 flex-shrink-0">
-          {locked && <Lock size={13} className="text-text-muted" />}
+          {locked && <Lock size={13} className="text-zinc-300" />}
           {calculated && (
-            <span className={`badge text-xs font-bold ${won ? 'bg-primary/20 text-primary' : 'bg-border text-text-muted'}`}>
+            <span className={`badge text-xs font-bold ${won ? 'bg-primary/20 text-white' : 'bg-border text-zinc-300'}`}>
               {won ? `+${earnedPts.points_earned} pts` : '0 pts'}
             </span>
           )}
-          {open ? <ChevronUp size={16} className="text-text-muted" /> : <ChevronDown size={16} className="text-text-muted" />}
+          {open ? <ChevronUp size={16} className="text-zinc-300" /> : <ChevronDown size={16} className="text-zinc-300" />}
         </div>
       </button>
 
       {open && (
         <div className="border-t border-border px-4 py-4 space-y-4">
           {locked && (
-            <div className="flex items-center gap-2 text-xs text-text-muted bg-surface-2 rounded-lg px-3 py-2">
+            <div className="flex items-center gap-2 text-xs text-zinc-300 bg-surface-2 rounded-lg px-3 py-2">
               <Lock size={12} />
               <span>El torneo ya comenzó · apuesta cerrada</span>
             </div>
           )}
           {calculated && (
             <div className={`flex items-center gap-2 text-xs rounded-lg px-3 py-2 ${
-              won ? 'bg-primary/10 text-primary' : 'bg-border/50 text-text-muted'
+              won ? 'bg-primary/10 text-white' : 'bg-border/50 text-zinc-300'
             }`}>
               {won ? <Trophy size={13} /> : <Circle size={13} />}
               <span>{won ? `¡Ganaste ${earnedPts.points_earned} puntos en esta sección!` : 'No acertaste en esta sección'}</span>
@@ -201,7 +201,7 @@ function PodioResultado({
 
   return (
     <div className="mt-4 space-y-2">
-      <p className="text-[11px] text-text-muted uppercase tracking-wide font-semibold">Podio real</p>
+      <p className="text-[11px] text-zinc-300 uppercase tracking-wide font-semibold">Podio real</p>
       {slots.map(({ key, emoji }) => {
         const actualTeam = teamById(detail.actual[key] ?? null)
         const predTeam   = teamById(detail.predicted[key] ?? null)
@@ -221,30 +221,30 @@ function PodioResultado({
                   {actualTeam.flag_url
                     ? <img src={actualTeam.flag_url} alt={actualTeam.abbreviation} className="w-6 h-4 rounded-sm object-cover flex-shrink-0" />
                     : <div className="w-6 h-4 rounded-sm bg-border flex items-center justify-center flex-shrink-0">
-                        <span className="text-[8px] text-text-muted font-bold">{actualTeam.abbreviation}</span>
+                        <span className="text-[8px] text-black font-bold">{actualTeam.abbreviation}</span>
                       </div>
                   }
-                  <span className="text-sm text-text-primary font-medium truncate">{actualTeam.name}</span>
+                  <span className="text-sm text-black font-medium truncate">{actualTeam.name}</span>
                 </>
               ) : (
-                <span className="text-sm text-text-muted italic">Por definir</span>
+                <span className="text-sm text-zinc-300 italic">Por definir</span>
               )}
             </div>
 
             {/* Mi apuesta + puntos */}
             <div className="flex-shrink-0 text-right">
               {predTeam && (
-                <p className="text-[10px] text-text-muted truncate max-w-[80px]">
+                <p className="text-[10px] text-black truncate max-w-[80px]">
                   {isExact || isPresence ? '' : ''}
                   {predTeam.abbreviation}
                 </p>
               )}
               {slotPts > 0 ? (
-                <span className={`text-xs font-bold ${isExact ? 'text-primary' : 'text-accent'}`}>
+                <span className={`text-xs font-bold ${isExact ? 'text-white' : 'text-zinc-300'}`}>
                   +{slotPts} pts{isPresence ? ' ↗' : ''}
                 </span>
               ) : predTeam ? (
-                <span className="text-xs text-text-muted">0 pts</span>
+                <span className="text-xs text-zinc-300">0 pts</span>
               ) : null}
             </div>
           </div>
@@ -298,7 +298,7 @@ function PodioSection({
       <div className="space-y-3">
         {positions.map(({ label, val, set }) => (
           <div key={label}>
-            <label className="block text-xs text-text-muted mb-1">{label}</label>
+            <label className="block text-xs text-zinc-300 mb-1">{label}</label>
             <TeamSelect value={val} onChange={set} teams={teams} placeholder="Elegir equipo…" disabled={locked} />
           </div>
         ))}
@@ -353,7 +353,7 @@ function EmpatesSection({
       locked={locked}
     >
       <div className="space-y-3">
-        <label className="block text-xs text-text-muted">¿Cuántos partidos terminarán empatados (0-72)?</label>
+        <label className="block text-xs text-zinc-300">¿Cuántos partidos terminarán empatados (0-72)?</label>
         <select
           disabled={locked}
           value={val}
@@ -367,11 +367,11 @@ function EmpatesSection({
         </select>
         {earned && actual !== undefined && (
           <div className="space-y-1">
-            <p className="text-xs text-text-muted">
-              Empates reales: <span className="text-text-primary font-semibold">{actual}</span>
+            <p className="text-xs text-zinc-300">
+              Empates reales: <span className="text-white font-semibold">{actual}</span>
               {pred?.empates_grupos != null && ` · tu apuesta: ${pred.empates_grupos}`}
             </p>
-            <p className={`text-xs font-bold ${earned.points_earned > 0 ? 'text-primary' : 'text-text-muted'}`}>
+            <p className={`text-xs font-bold ${earned.points_earned > 0 ? 'text-white' : 'text-zinc-300'}`}>
               {earned.points_earned > 0 ? `+${earned.points_earned} pts ganados` : '0 pts · no acertaste'}
             </p>
           </div>
@@ -417,7 +417,7 @@ function RangoGolesSection({
       locked={locked}
     >
       <div className="space-y-3">
-        <label className="block text-xs text-text-muted">
+        <label className="block text-xs text-zinc-300">
           Goles totales en los 104 partidos (incluye tiempo extra, excluye penales)
         </label>
         <select
@@ -433,12 +433,12 @@ function RangoGolesSection({
         </select>
         {earned && actual && (
           <div className="space-y-1">
-            <p className="text-xs text-text-muted">
-              Rango real: <span className="text-text-primary font-semibold">{actual}</span>
+            <p className="text-xs text-zinc-300">
+              Rango real: <span className="text-white font-semibold">{actual}</span>
               {total !== undefined && ` (${total} goles en total)`}
               {pred?.rango_goles && ` · tu apuesta: ${pred.rango_goles}`}
             </p>
-            <p className={`text-xs font-bold ${earned.points_earned > 0 ? 'text-primary' : 'text-text-muted'}`}>
+            <p className={`text-xs font-bold ${earned.points_earned > 0 ? 'text-white' : 'text-zinc-300'}`}>
               {earned.points_earned > 0 ? `+${earned.points_earned} pts ganados` : '0 pts · no acertaste'}
             </p>
           </div>
@@ -499,13 +499,13 @@ function FinalCeroSection({
               onClick={() => !locked && setVal(value)}
               className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl border transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
                 selected
-                  ? 'border-primary bg-primary/10 text-text-primary'
-                  : 'border-border bg-surface-2/30 text-text-secondary hover:border-border/80'
+                  ? 'border-primary bg-primary/10 text-white'
+                  : 'border-border bg-surface-2/30 text-white hover:border-border/80'
               }`}
             >
               {selected
-                ? <CheckCircle2 size={15} className="text-primary flex-shrink-0" />
-                : <Circle      size={15} className="text-text-muted flex-shrink-0" />
+                ? <CheckCircle2 size={15} className="text-white flex-shrink-0" />
+                : <Circle      size={15} className="text-zinc-300 flex-shrink-0" />
               }
               <span className="text-sm">{label}</span>
             </button>
@@ -513,10 +513,10 @@ function FinalCeroSection({
         })}
         {earned && actual !== undefined && (
           <div className="space-y-1 pt-1">
-            <p className="text-xs text-text-muted">
-              Resultado real: <span className="text-text-primary font-semibold">{actual ? 'Sí, fue 0-0' : 'No fue 0-0'}</span>
+            <p className="text-xs text-zinc-300">
+              Resultado real: <span className="text-white font-semibold">{actual ? 'Sí, fue 0-0' : 'No fue 0-0'}</span>
             </p>
-            <p className={`text-xs font-bold ${earned.points_earned > 0 ? 'text-primary' : 'text-text-muted'}`}>
+            <p className={`text-xs font-bold ${earned.points_earned > 0 ? 'text-white' : 'text-zinc-300'}`}>
               {earned.points_earned > 0 ? `+${earned.points_earned} pts ganados` : '0 pts · no acertaste'}
             </p>
           </div>
@@ -563,7 +563,7 @@ function TopScorerTeamSection({
       locked={locked}
     >
       <div className="space-y-3 overflow-visible">
-        <label className="block text-xs text-text-muted">Selecciona el equipo más goleador del torneo</label>
+        <label className="block text-xs text-zinc-300">Selecciona el equipo más goleador del torneo</label>
         <TeamSelect value={val} onChange={setVal} teams={teams} placeholder="Elegir equipo…" disabled={locked} />
       </div>
       {!locked && (
@@ -576,16 +576,16 @@ function TopScorerTeamSection({
       )}
       {earned && actualTeam && (
         <div className="mt-3 space-y-1">
-          <p className="text-[11px] text-text-muted uppercase tracking-wide font-semibold">Equipo real</p>
+          <p className="text-[11px] text-zinc-300 uppercase tracking-wide font-semibold">Equipo real</p>
           <div className="flex items-center gap-2 rounded-xl bg-surface-2/60 px-3 py-2">
             {actualTeam.flag_url
               ? <img src={actualTeam.flag_url} alt={actualTeam.abbreviation} className="w-6 h-4 rounded-sm object-cover flex-shrink-0" />
               : <div className="w-6 h-4 rounded-sm bg-border flex items-center justify-center flex-shrink-0">
-                  <span className="text-[8px] text-text-muted font-bold">{actualTeam.abbreviation}</span>
+                  <span className="text-[8px] text-zinc-300 font-bold">{actualTeam.abbreviation}</span>
                 </div>
             }
-            <span className="text-sm text-text-primary font-medium flex-1">{actualTeam.name}</span>
-            <span className={`text-xs font-bold flex-shrink-0 ${earned.points_earned > 0 ? 'text-primary' : 'text-text-muted'}`}>
+            <span className="text-sm text-white font-medium flex-1">{actualTeam.name}</span>
+            <span className={`text-xs font-bold flex-shrink-0 ${earned.points_earned > 0 ? 'text-white' : 'text-zinc-300'}`}>
               {earned.points_earned > 0 ? `+${earned.points_earned} pts` : '0 pts'}
             </span>
           </div>
@@ -624,7 +624,7 @@ function TopGroupSection({
       locked={locked}
     >
       <div className="space-y-3">
-        <label className="block text-xs text-text-muted">¿Qué grupo marca más goles en los 6 partidos grupales?</label>
+        <label className="block text-xs text-zinc-300">¿Qué grupo marca más goles en los 6 partidos grupales?</label>
         <select
           disabled={locked}
           value={val ?? ''}
@@ -647,10 +647,10 @@ function TopGroupSection({
       )}
       {earned && actualGroup && (
         <div className="mt-3 space-y-1">
-          <p className="text-[11px] text-text-muted uppercase tracking-wide font-semibold">Grupo real</p>
+          <p className="text-[11px] text-zinc-300 uppercase tracking-wide font-semibold">Grupo real</p>
           <div className="flex items-center gap-2 rounded-xl bg-surface-2/60 px-3 py-2">
-            <span className="text-sm text-text-primary font-medium flex-1">Grupo {actualGroup.name}</span>
-            <span className={`text-xs font-bold flex-shrink-0 ${earned.points_earned > 0 ? 'text-primary' : 'text-text-muted'}`}>
+            <span className="text-sm text-white font-medium flex-1">Grupo {actualGroup.name}</span>
+            <span className={`text-xs font-bold flex-shrink-0 ${earned.points_earned > 0 ? 'text-white' : 'text-zinc-300'}`}>
               {earned.points_earned > 0 ? `+${earned.points_earned} pts` : '0 pts'}
             </span>
           </div>
@@ -721,9 +721,8 @@ export function MasPuntosPage() {
   if (!user) {
     return (
       <div className="max-w-2xl mx-auto px-4 py-12 text-center">
-        <Star className="mx-auto mb-3 text-accent" size={32} />
-        <h2 className="text-lg font-bold text-text-primary mb-2">Apuestas especiales</h2>
-        <p className="text-sm text-text-muted">Debés iniciar sesión para participar.</p>
+        <h2 className="text-lg font-bold text-white mb-2">Apuestas especiales</h2>
+        <p className="text-sm text-zinc-300">Debés iniciar sesión para participar.</p>
       </div>
     )
   }
@@ -735,11 +734,10 @@ export function MasPuntosPage() {
 
       {/* Header */}
       <div>
-        <h1 className="text-xl font-bold text-text-primary flex items-center gap-2">
-          <Star className="text-accent" size={20} />
+        <h1 className="text-xl font-bold italic text-white flex items-center gap-2">
           + Puntos
         </h1>
-        <p className="text-xs text-text-muted mt-1">
+        <p className="text-xs text-zinc-300 mt-1">
           Apuestas especiales · deben hacerse antes que inicie el torneo
         </p>
       </div>
@@ -747,17 +745,17 @@ export function MasPuntosPage() {
       {/* Resumen */}
       <div className="card p-4 flex items-center justify-between">
         <div>
-          <p className="text-xs text-text-muted">Puntos especiales ganados</p>
-          <p className="text-2xl font-bold text-accent tabular-nums mt-0.5">{totalEarned}</p>
+          <p className="text-xs text-zinc-300">Puntos especiales ganados</p>
+          <p className="text-2xl font-bold text-zinc-400 tabular-nums mt-0.5">{totalEarned}</p>
         </div>
         <div className="text-right">
-          <p className="text-xs text-text-muted">Máximo disponible</p>
-          <p className="text-2xl font-bold text-text-muted tabular-nums mt-0.5">{maxPts}</p>
+          <p className="text-xs text-zinc-300">Máximo disponible</p>
+          <p className="text-2xl font-bold text-zinc-300 tabular-nums mt-0.5">{maxPts}</p>
         </div>
       </div>
 
       {locked && (
-        <div className="flex items-center gap-2 text-xs text-text-muted bg-surface-2 rounded-xl px-4 py-2.5 border border-border">
+        <div className="flex items-center gap-2 text-xs text-zinc-300 bg-surface-2 rounded-xl px-4 py-2.5 border border-border">
           <Lock size={13} />
           <span>El torneo ya comenzó. Las apuestas están cerradas. Los puntos se calculan automáticamente al cargar resultados.</span>
         </div>

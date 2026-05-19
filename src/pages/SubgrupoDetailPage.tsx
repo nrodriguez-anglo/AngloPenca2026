@@ -21,7 +21,7 @@ function MedalOrRank({ rank }: { rank: number }) {
   if (rank === 2) return <span className="text-accent text-lg">🥈</span>
   if (rank === 3) return <span className="text-accent text-lg">🥉</span>
   return (
-    <span className="text-sm font-bold tabular-nums text-text-muted w-6 text-center">
+    <span className="text-sm font-bold tabular-nums text-zinc-400 w-6 text-center">
       {rank}
     </span>
   )
@@ -118,7 +118,7 @@ export function SubgrupoDetailPage() {
   if (loadingSg) {
     return (
       <div className="flex justify-center py-16">
-        <Loader2 className="animate-spin text-primary" size={28} />
+        <Loader2 className="animate-spin text-white" size={28} />
       </div>
     )
   }
@@ -126,7 +126,7 @@ export function SubgrupoDetailPage() {
   if (!subgrupo) {
     return (
       <div className="card p-8 text-center">
-        <p className="text-text-muted text-sm">Subgrupo no encontrado.</p>
+        <p className="text-zinc-400 text-sm">Subgrupo no encontrado.</p>
         <button onClick={() => navigate('/subgrupos')} className="btn-primary mt-4 text-sm">
           Volver a subgrupos
         </button>
@@ -152,18 +152,18 @@ export function SubgrupoDetailPage() {
           onClick={() => navigate('/subgrupos')}
           className="p-1.5 rounded-lg hover:bg-surface-2 transition-colors"
         >
-          <ArrowLeft size={18} className="text-text-secondary" />
+          <ArrowLeft size={18} className="text-white" />
         </button>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <h1 className="text-xl font-bold text-text-primary truncate">{subgrupo.name}</h1>
+            <h1 className="text-xl font-bold text-white italic">{subgrupo.name}</h1>
             {!subgrupo.is_active && (
               <span className="badge bg-error/20 text-error text-[10px] flex-shrink-0">
                 Inactivo
               </span>
             )}
           </div>
-          <p className="text-xs text-text-muted">{members.length} miembros</p>
+          <p className="text-xs text-zinc-300">{members.length} miembros</p>
         </div>
         {isCreator && subgrupo.is_active && (
           <div className="flex items-center gap-1">
@@ -179,7 +179,7 @@ export function SubgrupoDetailPage() {
                   deleteMutation.mutate()
                 }
               }}
-              className="p-2 rounded-lg text-text-muted hover:text-error hover:bg-error/10 transition-colors"
+              className="p-2 rounded-lg text-zinc-400 hover:text-error hover:bg-error/10 transition-colors"
               title="Eliminar subgrupo"
             >
               <UserMinus size={16} />
@@ -194,8 +194,8 @@ export function SubgrupoDetailPage() {
             title={subgrupo.is_active ? 'Deshabilitar subgrupo' : 'Habilitar subgrupo'}
             className={`p-2 rounded-lg transition-colors ${
               subgrupo.is_active
-                ? 'text-text-muted hover:text-error hover:bg-error/10'
-                : 'text-text-muted hover:text-primary hover:bg-primary/10'
+                ? 'text-zinc-400 hover:text-error hover:bg-error/10'
+                : 'text-zinc-400 hover:text-primary hover:bg-primary/10'
             }`}
           >
             {subgrupo.is_active ? <PowerOff size={16} /> : <Power size={16} />}
@@ -208,7 +208,7 @@ export function SubgrupoDetailPage() {
                 deleteMutation.mutate()
               }
             }}
-            className="p-2 rounded-lg text-text-muted hover:text-error hover:bg-error/10 transition-colors"
+            className="p-2 rounded-lg text-zinc-400 hover:text-error hover:bg-error/10 transition-colors"
             title="Eliminar subgrupo"
           >
             <UserMinus size={16} />
@@ -218,14 +218,14 @@ export function SubgrupoDetailPage() {
 
       {loadingRank && (
         <div className="flex justify-center py-10">
-          <Loader2 className="animate-spin text-primary" size={24} />
+          <Loader2 className="animate-spin text-white" size={24} />
         </div>
       )}
 
       {!loadingRank && ranking.length === 0 && (
         <div className="card p-8 text-center">
-          <Trophy size={32} className="text-text-muted mx-auto mb-3" />
-          <p className="text-text-muted text-sm">
+          <Trophy size={32} className="text-zinc-400 mx-auto mb-3" />
+          <p className="text-zinc-400 text-sm">
             Aún no hay puntos registrados en este subgrupo.
           </p>
         </div>
@@ -240,10 +240,10 @@ export function SubgrupoDetailPage() {
               </div>
               <Avatar entry={entry} />
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-text-primary truncate">
+                <p className="text-sm font-medium text-white truncate">
                   {entry.display_name}
                 </p>
-                <p className="text-[11px] text-text-muted">
+                <p className="text-[11px] text-zinc-400">
                   Global #{entry.global_rank} · {entry.predictions_count} pred.
                 </p>
               </div>
@@ -251,7 +251,7 @@ export function SubgrupoDetailPage() {
                 <p className="text-xl font-bold tabular-nums text-primary leading-none">
                   {entry.total_points}
                 </p>
-                <p className="text-[10px] text-text-muted mt-0.5">pts</p>
+                <p className="text-[10px] text-zinc-400 mt-0.5">pts</p>
               </div>
               {isCreator && entry.user_id !== user?.id && (
                 <button
@@ -260,7 +260,7 @@ export function SubgrupoDetailPage() {
                       removeMutation.mutate(entry.user_id)
                     }
                   }}
-                  className="p-1.5 rounded-lg text-text-muted hover:text-error hover:bg-error/10 transition-colors flex-shrink-0"
+                  className="p-1.5 rounded-lg text-zinc-400 hover:text-error hover:bg-error/10 transition-colors flex-shrink-0"
                   title="Eliminar del subgrupo"
                 >
                   <UserMinus size={14} />
@@ -275,7 +275,7 @@ export function SubgrupoDetailPage() {
       <Modal open={showInvite} onClose={() => { setShowInvite(false); setSearchUser('') }} title="Agregar miembros">
         <div className="space-y-3">
           <div className="relative">
-            <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted" />
+            <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" />
             <input
               type="text"
               value={searchUser}
@@ -286,7 +286,7 @@ export function SubgrupoDetailPage() {
           </div>
 
           {filteredProfiles.length === 0 && (
-            <p className="text-sm text-text-muted text-center py-4">No hay usuarios disponibles</p>
+            <p className="text-sm text-zinc-400 text-center py-4">No hay usuarios disponibles</p>
           )}
 
           <div className="max-h-60 overflow-y-auto space-y-1">
@@ -294,7 +294,7 @@ export function SubgrupoDetailPage() {
               <div key={p.id} className="flex items-center justify-between py-2 px-2 rounded hover:bg-surface-2 transition-colors">
                 <div className="min-w-0">
                   <p className="text-sm text-text-primary truncate">{p.display_name}</p>
-                  <p className="text-xs text-text-muted">@{p.username}</p>
+                  <p className="text-xs text-zinc-400">@{p.username}</p>
                 </div>
                 <button
                   onClick={() => inviteMutation.mutate(p.id)}

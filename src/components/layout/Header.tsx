@@ -33,7 +33,7 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-primary backdrop-blur border-b border-border">
+      <header className="sticky top-0 z-40 bg-black backdrop-blur">
         <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
           {/* Logo */}
           <Link to="/fixture" className="flex items-center gap-2 font-bold text-text-primary">
@@ -53,9 +53,9 @@ export function Header() {
             <DeskNavLink to="/cuadro">Cuadro</DeskNavLink>
             {user && <DeskNavLink to="/mis-predicciones">JUGAR</DeskNavLink>}
             {user && <DeskNavLink to="/mas-puntos">+ Puntos</DeskNavLink>}
-            <DeskNavLink to="/ayuda">
+            {/* <DeskNavLink to="/ayuda">
               <HelpCircle size={14} className="inline mr-1" />Ayuda
-            </DeskNavLink>
+            </DeskNavLink> */}
           </nav>
 
           {/* Derecha: usuario o botón ingresar */}
@@ -77,8 +77,8 @@ export function Header() {
                 </button>
 
                 {userMenuOpen && (
-                  <div className="absolute right-0 top-full mt-1 w-48 card py-1 shadow-2xl z-50">
-                    <Link to="/perfil" className="block px-4 py-2 text-sm text-primary hover:text-text-primary hover:bg-surface-2 transition-colors">
+                  <div className="absolute bg-white right-0 top-full mt-1 w-48 card py-1 shadow-2xl z-50">
+                    <Link to="/perfil" className="block px-4 py-2 text-sm text-primary hover:text-black hover:bg-surface-2 transition-colors">
                       Mi perfil
                     </Link>
                     {isAdmin && (
@@ -149,8 +149,7 @@ export function Header() {
             {user && <MobileNavLink to="/mis-predicciones">JUGAR</MobileNavLink>}
             {user && <MobileNavLink to="/mas-puntos">+ Puntos</MobileNavLink>}
             {user && <MobileNavLink to="/perfil">Mi perfil</MobileNavLink>}
-{user && <MobileNavLink to="/descargar">Descargar app</MobileNavLink>}
-            <MobileNavLink to="/ayuda">Ayuda · Puntaje</MobileNavLink>
+            {/* <MobileNavLink to="/ayuda">Ayuda · Puntaje</MobileNavLink> */}
             {!user && <MobileNavLink to="/auth">Ingresar</MobileNavLink>}
           </nav>
         </div>

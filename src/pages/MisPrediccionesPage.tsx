@@ -13,10 +13,10 @@ type Tab = 'predecir' | 'historial'
 
 function ScoreBadge({ pred }: { pred: PredictionWithMatch }) {
   return (
-    <span className="text-sm font-bold tabular-nums text-text-primary">
+    <span className="text-sm font-bold tabular-nums text-white">
       {pred.home_score} – {pred.away_score}
       {pred.home_score_et !== null && (
-        <span className="text-xs text-text-muted ml-1">
+        <span className="text-xs text-zinc-300 ml-1">
           (ET {pred.home_score_et}:{pred.away_score_et})
         </span>
       )}
@@ -25,8 +25,8 @@ function ScoreBadge({ pred }: { pred: PredictionWithMatch }) {
 }
 
 function PointsBadge({ points }: { points: number | null }) {
-  if (points === null) return <span className="badge bg-border text-text-muted text-[10px]">—</span>
-  if (points === 0) return <span className="badge bg-border text-text-muted text-[10px]">0 pts</span>
+  if (points === null) return <span className="badge bg-border text-zinc-300 text-[10px]">—</span>
+  if (points === 0) return <span className="badge bg-border text-zinc-300 text-[10px]">0 pts</span>
   return (
     <span className="badge bg-primary/20 text-primary text-[10px] font-semibold">
       +{points} pts
@@ -49,7 +49,7 @@ function PredecirTab() {
   if (isLoading || loadingPreds) {
     return (
       <div className="flex justify-center py-16">
-        <Loader2 className="animate-spin text-primary" size={28} />
+        <Loader2 className="animate-spin text-white" size={28} />
       </div>
     )
   }
@@ -91,12 +91,12 @@ function PredecirTab() {
                   <div className="flex-1 min-w-0">
                     <TeamFlag team={match.home_team} slotLabel={match.home_slot_label} size="sm" align="left" abbrev />
                   </div>
-                  <span className="text-text-muted text-xs">vs</span>
+                  <span className="text-zinc-300 text-xs">vs</span>
                   <div className="flex-1 min-w-0 flex justify-end">
                     <TeamFlag team={match.away_team} slotLabel={match.away_slot_label} size="sm" align="right" abbrev />
                   </div>
                 </div>
-                <p className="text-[11px] text-text-muted">
+                <p className="text-[11px] text-zinc-400">
                   {formatMatchDay(match.match_datetime)} · {formatMatchTime(match.match_datetime)}
                 </p>
               </div>
@@ -106,10 +106,10 @@ function PredecirTab() {
                 {pred ? (
                   <div>
                     <ScoreBadge pred={pred} />
-                    <p className="text-[10px] text-primary mt-0.5">✓ Guardada</p>
+                    <p className="text-[10px] text-zinc-300 mt-0.5">✓ Guardada</p>
                   </div>
                 ) : (
-                  <span className="text-[11px] text-text-muted italic">Sin pred.</span>
+                  <span className="text-[11px] text-zinc-400 italic">Sin pred.</span>
                 )}
               </div>
             </div>
@@ -146,14 +146,14 @@ function HistorialTab() {
   if (isLoading) {
     return (
       <div className="flex justify-center py-16">
-        <Loader2 className="animate-spin text-primary" size={28} />
+        <Loader2 className="animate-spin text-white" size={28} />
       </div>
     )
   }
 
   if (past.length === 0) {
     return (
-      <p className="text-text-muted text-sm text-center py-12">
+      <p className="text-zinc-400 text-sm text-center py-12">
         Aún no hay predicciones en el historial.
       </p>
     )
@@ -197,17 +197,17 @@ function HistorialTab() {
                 <div className="flex-shrink-0 text-center space-y-0.5">
                   {/* Real result */}
                   {isFinished && m.home_score_90 !== null ? (
-                    <p className="text-xs font-bold text-text-primary tabular-nums">
+                    <p className="text-xs font-bold text-white tabular-nums">
                       {m.home_score_90} – {m.away_score_90}
                     </p>
                   ) : (
-                    <div className="flex items-center gap-1 text-text-muted">
+                    <div className="flex items-center gap-1 text-zinc-300">
                       <Lock size={10} />
                       <span className="text-[10px]">Esperando</span>
                     </div>
                   )}
                   {/* My prediction */}
-                  <p className="text-[10px] text-text-muted">
+                  <p className="text-[10px] text-zinc-300">
                     Mi pred: {pred.home_score}–{pred.away_score}
                   </p>
                 </div>
@@ -238,18 +238,18 @@ export function MisPrediccionesPage() {
     <RequireAuth>
       <RequireActive>
         <div className="max-w-2xl mx-auto px-4 py-6 space-y-4">
-          <h1 className="text-xl font-bold text-text-primary">Mis predicciones</h1>
+          <h1 className="text-xl font-bold text-white italic">Mis predicciones</h1>
 
           {/* Tabs */}
-          <div className="flex gap-1 bg-surface-2 p-1 rounded-xl">
+          <div className="flex gap-1 bg-black p-1 rounded-xl">
             {(['predecir', 'historial'] as Tab[]).map(t => (
               <button
                 key={t}
                 onClick={() => setTab(t)}
                 className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors capitalize ${
                   tab === t
-                    ? 'bg-surface text-text-primary shadow-sm'
-                    : 'text-text-muted hover:text-text-secondary'
+                    ? 'bg-white text-primary shadow-sm'
+                    : 'bg-black text-zinc-300 hover:text-white'
                 }`}
               >
                 {t === 'predecir' ? 'Predecir' : 'Historial'}

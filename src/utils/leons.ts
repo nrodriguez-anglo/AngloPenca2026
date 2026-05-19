@@ -6,7 +6,7 @@ export interface LeonConfig {
 
 export const leonConfigs: Record<string, LeonConfig> = {
   '/mis-predicciones': {
-    image: '/leon-base.png',
+    image: '/leon-predicciones.png',
     containerClassName: `
       hidden md:flex
       translate-x-[10%]
@@ -22,16 +22,49 @@ export const leonConfigs: Record<string, LeonConfig> = {
     `,
   },
 
+  '/grupos': {
+    image: '/leon-grupos.png',
+    containerClassName: `
+      hidden md:flex
+      translate-x-[-15%]
+      md:translate-x-[-25%]
+      lg:translate-x-[-35%]
+    `,
+    imageClassName: `
+      w-40 h-40
+      sm:w-56 sm:h-56
+      md:w-75 md:h-75
+      lg:w-[500px] lg:h-[500px]
+      xl:w-[700px] xl:h-[700px]
+    `,
+  },
+
+  '/mas-puntos': {
+    image: '/leon-puntos.png',
+    containerClassName: `
+      hidden md:flex
+      translate-x-[15%]
+      md:translate-x-[25%]
+      lg:translate-x-[35%]
+    `,
+    imageClassName: `
+      w-40 h-40
+      sm:w-56 sm:h-56
+      md:w-75 md:h-75
+      lg:w-[500px] lg:h-[500px]
+      xl:w-[700px] xl:h-[700px]
+    `,
+  },
+
   '/fixture': {
   image: '/leon-fixture.png',
   containerClassName: `
     hidden md:flex
     -translate-x-[15%]
-    md:translate-x-[-5%]
-    lg:translate-x-[-30%]
+    md:translate-x-[10%]
+    lg:translate-x-[35%]
   `,
   imageClassName: `
-    scale-x-[-1]
     w-32 h-32
     sm:w-48 sm:h-48
     md:w-[350px] md:h-[350px]

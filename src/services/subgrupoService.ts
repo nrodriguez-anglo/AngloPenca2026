@@ -59,11 +59,21 @@ export async function createSubgrupo(name: string, creatorId: string): Promise<S
   return data as Subgrupo
 }
 
-export async function addMemberToSubgrupo(subgrupoId: string, userId: string): Promise<void> {
-  const { error } = await supabase
+export async function addMemberToSubgrupo(
+  subgrupoId: string,
+  userId: string
+) {
+  return await supabase
     .from('subgrupo_members')
-    .insert({ subgrupo_id: subgrupoId, user_id: userId })
-  if (error) throw error
+    .upsert(
+      {
+        subgrupo_id: subgrupoId,
+        user_id: userId,
+      },
+      {
+        onConflict: 'user_id,subgrupo_id',
+      }
+    )
 }
 
 export async function leaveSubgrupo(subgrupoId: string, userId: string): Promise<void> {

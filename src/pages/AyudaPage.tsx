@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { Loader2, HelpCircle, Target, Trophy, Zap, Clock, Shield, Star } from 'lucide-react'
+import { Loader2, Target, Trophy, Zap, Clock, Shield, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { fetchScoringConfig } from '../services/adminService'
 import { fetchBonusConfig } from '../services/bonusService'
@@ -72,14 +72,14 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
 
   return (
     <section className="space-y-3">
-      <h2 className="text-xs font-semibold text-text-muted uppercase tracking-widest flex items-center gap-2">
+      <h2 className="text-xs font-semibold text-zinc-200 uppercase tracking-widest flex items-center gap-2">
         <span className="w-5 h-px bg-border inline-block" />
         Calculadora de puntos
         <span className="flex-1 h-px bg-border inline-block" />
       </h2>
 
       <div className="card p-4 space-y-4">
-        <p className="text-sm text-text-secondary leading-relaxed">
+        <p className="text-sm text-zinc-300 leading-relaxed">
           Probá diferentes resultados para entender cómo se calculan los puntos.
           Configurá el resultado real y tu predicción, y mirá cuántos puntos ganarías.
         </p>
@@ -99,7 +99,7 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
             <p className="text-sm font-medium text-text-primary">
               {isGroup ? 'Fase de grupos' : 'Fase eliminatoria'}
             </p>
-            <p className="text-[11px] text-text-muted">
+            <p className="text-[11px] text-zinc-200">
               {isGroup ? 'Solo 90 minutos' : '90 min + alargue + penales (si hay empate)'}
             </p>
           </div>
@@ -108,16 +108,16 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
         {/* Equipos */}
         <div className="flex items-center justify-between text-sm px-2">
           <span className="font-semibold text-text-primary w-20 truncate">Uruguay</span>
-          <span className="text-xs text-text-muted">vs</span>
+          <span className="text-xs text-zinc-200">vs</span>
           <span className="font-semibold text-text-primary w-20 truncate text-right">Argentina</span>
         </div>
 
         {/* Resultado real */}
         <div className="bg-background rounded-lg p-3 space-y-2">
-          <p className="text-[10px] text-text-muted uppercase tracking-wider">Resultado real</p>
+          <p className="text-[10px] text-zinc-200 uppercase tracking-wider">Resultado real</p>
           <div className="flex items-center gap-3">
             <div className="flex-1 space-y-1">
-              <label className="text-[11px] text-text-secondary">Goles Uruguay (90')</label>
+              <label className="text-[11px] text-zinc-300">Goles Uruguay (90')</label>
               <input
                 type="number"
                 min={0}
@@ -126,9 +126,9 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
                 className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-text-primary focus:outline-none focus:border-primary"
               />
             </div>
-            <span className="text-lg font-bold text-text-muted pt-5">–</span>
+            <span className="text-lg font-bold text-zinc-200 pt-5">–</span>
             <div className="flex-1 space-y-1">
-              <label className="text-[11px] text-text-secondary">Goles Argentina (90')</label>
+              <label className="text-[11px] text-zinc-300">Goles Argentina (90')</label>
               <input
                 type="number"
                 min={0}
@@ -143,7 +143,7 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
           {needsEt && (
             <div className="flex items-center gap-3 pt-1">
               <div className="flex-1 space-y-1">
-                <label className="text-[11px] text-text-secondary">Goles URU (alargue)</label>
+                <label className="text-[11px] text-zinc-300">Goles URU (alargue)</label>
                 <input
                   type="number"
                   min={0}
@@ -152,9 +152,9 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
                   className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-text-primary focus:outline-none focus:border-primary"
                 />
               </div>
-              <span className="text-lg font-bold text-text-muted pt-5">–</span>
+              <span className="text-lg font-bold text-zinc-200 pt-5">–</span>
               <div className="flex-1 space-y-1">
-                <label className="text-[11px] text-text-secondary">Goles ARG (alargue)</label>
+                <label className="text-[11px] text-zinc-300">Goles ARG (alargue)</label>
                 <input
                   type="number"
                   min={0}
@@ -169,14 +169,14 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
           {/* Penales reales */}
           {needsEt && (realEtHome === realEtAway) && (
             <div className="space-y-1 pt-1">
-              <label className="text-[11px] text-text-secondary">Ganador penales</label>
+              <label className="text-[11px] text-zinc-300">Ganador penales</label>
               <div className="flex gap-2">
                 <button
                   onClick={() => setRealPkWinner('home')}
                   className={`flex-1 py-2 rounded text-xs font-medium transition-colors ${
                     realPkWinner === 'home'
                       ? 'bg-primary text-white'
-                      : 'bg-surface border border-border text-text-secondary hover:border-primary'
+                      : 'bg-surface border border-border text-zinc-300 hover:border-primary'
                   }`}
                 >
                   Uruguay
@@ -186,7 +186,7 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
                   className={`flex-1 py-2 rounded text-xs font-medium transition-colors ${
                     realPkWinner === 'away'
                       ? 'bg-primary text-white'
-                      : 'bg-surface border border-border text-text-secondary hover:border-primary'
+                      : 'bg-surface border border-border text-zinc-300 hover:border-primary'
                   }`}
                 >
                   Argentina
@@ -201,7 +201,7 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
           <p className="text-[10px] text-accent/80 uppercase tracking-wider">Tu predicción</p>
           <div className="flex items-center gap-3">
             <div className="flex-1 space-y-1">
-              <label className="text-[11px] text-text-secondary">Goles Uruguay (90')</label>
+              <label className="text-[11px] text-zinc-300">Goles Uruguay (90')</label>
               <input
                 type="number"
                 min={0}
@@ -210,9 +210,9 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
                 className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-text-primary focus:outline-none focus:border-accent"
               />
             </div>
-            <span className="text-lg font-bold text-text-muted pt-5">–</span>
+            <span className="text-lg font-bold text-zinc-200 pt-5">–</span>
             <div className="flex-1 space-y-1">
-              <label className="text-[11px] text-text-secondary">Goles Argentina (90')</label>
+              <label className="text-[11px] text-zinc-300">Goles Argentina (90')</label>
               <input
                 type="number"
                 min={0}
@@ -227,7 +227,7 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
           {needsEt && (
             <div className="flex items-center gap-3 pt-1">
               <div className="flex-1 space-y-1">
-                <label className="text-[11px] text-text-secondary">Goles URU (alargue)</label>
+                <label className="text-[11px] text-zinc-300">Goles URU (alargue)</label>
                 <input
                   type="number"
                   min={0}
@@ -236,9 +236,9 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
                   className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-text-primary focus:outline-none focus:border-accent"
                 />
               </div>
-              <span className="text-lg font-bold text-text-muted pt-5">–</span>
+              <span className="text-lg font-bold text-zinc-200 pt-5">–</span>
               <div className="flex-1 space-y-1">
-                <label className="text-[11px] text-text-secondary">Goles ARG (alargue)</label>
+                <label className="text-[11px] text-zinc-300">Goles ARG (alargue)</label>
                 <input
                   type="number"
                   min={0}
@@ -253,14 +253,14 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
           {/* Penales predichos */}
           {needsEt && (realEtHome === realEtAway) && (
             <div className="space-y-1 pt-1">
-              <label className="text-[11px] text-text-secondary">Ganador penales</label>
+              <label className="text-[11px] text-zinc-300">Ganador penales</label>
               <div className="flex gap-2">
                 <button
                   onClick={() => setPredPkWinner('home')}
                   className={`flex-1 py-2 rounded text-xs font-medium transition-colors ${
                     predPkWinner === 'home'
                       ? 'bg-accent text-white'
-                      : 'bg-surface border border-border text-text-secondary hover:border-accent'
+                      : 'bg-surface border border-border text-zinc-300 hover:border-accent'
                   }`}
                 >
                   Uruguay
@@ -270,7 +270,7 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
                   className={`flex-1 py-2 rounded text-xs font-medium transition-colors ${
                     predPkWinner === 'away'
                       ? 'bg-accent text-white'
-                      : 'bg-surface border border-border text-text-secondary hover:border-accent'
+                      : 'bg-surface border border-border text-zinc-300 hover:border-accent'
                   }`}
                 >
                   Argentina
@@ -282,12 +282,12 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
 
         {/* Resultado */}
         <div className="bg-surface rounded-lg p-4 space-y-2">
-          <p className="text-[10px] text-text-muted uppercase tracking-wider">Puntos obtenidos</p>
+          <p className="text-[10px] text-zinc-200 uppercase tracking-wider">Puntos obtenidos</p>
           {breakdown.length > 0 ? (
             <div className="space-y-1.5">
               {breakdown.map(b => (
                 <div key={b.label} className="flex items-center justify-between text-sm">
-                  <span className="text-text-secondary">{b.label}</span>
+                  <span className="text-zinc-300">{b.label}</span>
                   <span className="font-bold text-primary">+{b.pts} pts</span>
                 </div>
               ))}
@@ -297,7 +297,7 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
               </div>
             </div>
           ) : (
-            <p className="text-sm text-text-muted text-center py-2">
+            <p className="text-sm text-zinc-200 text-center py-2">
               No acertaste ni el ganador ni el marcador. 0 pts.
             </p>
           )}
@@ -317,7 +317,7 @@ function MatchExample({
 }) {
   return (
     <div className="bg-background rounded-lg p-3 space-y-2">
-      <p className="text-[10px] text-text-muted uppercase tracking-wider">{label}</p>
+      <p className="text-[10px] text-zinc-200 uppercase tracking-wider">{label}</p>
       <div className="flex items-center justify-between text-sm">
         <span className="font-medium text-text-primary w-16 truncate">{home}</span>
         <span className="font-bold tabular-nums text-primary mx-2">
@@ -326,7 +326,7 @@ function MatchExample({
         <span className="font-medium text-text-primary w-16 truncate text-right">{away}</span>
       </div>
       <div className="flex items-center gap-1.5">
-        <span className="text-[11px] text-text-muted">Tu predicción:</span>
+        <span className="text-[11px] text-zinc-200">Tu predicción:</span>
         <span className="text-[11px] font-semibold text-accent">{predicted}</span>
       </div>
     </div>
@@ -339,7 +339,7 @@ function PtsRow({ label, pts, sub }: { label: string; pts: number; sub?: string 
     <div className="flex items-start justify-between gap-3 py-2.5 border-b border-border last:border-0">
       <div className="min-w-0">
         <p className="text-sm text-text-primary">{label}</p>
-        {sub && <p className="text-[11px] text-text-muted mt-0.5">{sub}</p>}
+        {sub && <p className="text-[11px] text-zinc-200 mt-0.5">{sub}</p>}
       </div>
       <span className="flex-shrink-0 text-base font-bold text-primary tabular-nums">
         +{pts} pts
@@ -393,7 +393,7 @@ export function AyudaPage() {
 
   if (!cfg) {
     return (
-      <div className="card p-6 text-center text-text-muted text-sm">
+      <div className="card p-6 text-center text-zinc-200 text-sm">
         No hay configuración de puntaje activa. Contactá al administrador.
       </div>
     )
@@ -409,34 +409,33 @@ export function AyudaPage() {
 
       {/* Header */}
       <div className="flex items-center gap-3">
-        <HelpCircle className="text-primary flex-shrink-0" size={24} />
         <div>
-          <h1 className="text-xl font-bold text-text-primary">¿Cómo funciona la Penca?</h1>
-          <p className="text-xs text-text-muted mt-0.5">Config activa: <span className="text-accent">{cfg.name}</span></p>
+          <h1 className="text-xl font-bold text-white italic">¿Cómo funciona la Penca?</h1>
+          <p className="text-xs text-zinc-500 mt-0.5">Config activa: <span className="text-zinc-500">{cfg.name}</span></p>
         </div>
       </div>
 
       {/* Intro */}
       <div className="card p-4 space-y-2">
-        <p className="text-sm text-text-secondary leading-relaxed">
+        <p className="text-sm text-zinc-300 leading-relaxed">
           Predecís el resultado de cada partido antes de que empiece. Cuanto más preciso, más puntos ganás.
           Al final del torneo, el jugador con más puntos gana la penca.
         </p>
-        <p className="text-[12px] text-text-muted leading-relaxed">
+        <p className="text-[12px] text-zinc-200 leading-relaxed">
           Las predicciones se bloquean automáticamente cuando el partido comienza. No podés modificarlas una vez que empieza.
         </p>
       </div>
 
       {/* ── FASE DE GRUPOS ── */}
       <section className="space-y-3">
-        <h2 className="text-xs font-semibold text-text-muted uppercase tracking-widest flex items-center gap-2">
+        <h2 className="text-xs font-semibold text-zinc-200 uppercase tracking-widest flex items-center gap-2">
           <span className="w-5 h-px bg-border inline-block" />
           Fase de grupos
           <span className="flex-1 h-px bg-border inline-block" />
         </h2>
 
         <div className="card p-4">
-          <p className="text-sm text-text-secondary mb-3">
+          <p className="text-sm text-zinc-300 mb-3">
             Predecís el marcador exacto a 90 minutos (sin tiempo extra ni penales). Los puntos se acumulan:
           </p>
           <PtsRow
@@ -463,7 +462,7 @@ export function AyudaPage() {
             <MatchExample home="Argentina" away="Brasil" homeScore={2} awayScore={1}
               predicted="2 – 1" label="Resultado real" />
             <div className="flex items-center justify-between bg-primary/10 rounded-lg px-3 py-2">
-              <span className="text-xs text-text-secondary">Acertaste el marcador exacto</span>
+              <span className="text-xs text-zinc-300">Acertaste el marcador exacto</span>
               <span className="text-sm font-bold text-primary">+{cfg.exact_score_points} pts</span>
             </div>
           </Scenario>
@@ -473,10 +472,10 @@ export function AyudaPage() {
               predicted="3 – 0" label="Resultado real" />
             <div className="space-y-1.5">
               <div className="flex items-center justify-between bg-accent/10 rounded-lg px-3 py-2">
-                <span className="text-xs text-text-secondary">Acertaste que ganó Argentina</span>
+                <span className="text-xs text-zinc-300">Acertaste que ganó Argentina</span>
                 <span className="text-sm font-bold text-accent">+{cfg.correct_winner_points} pts</span>
               </div>
-              <p className="text-[11px] text-text-muted px-1">
+              <p className="text-[11px] text-zinc-200 px-1">
                 No acertaste el marcador exacto, pero sí el equipo ganador.
               </p>
             </div>
@@ -487,10 +486,10 @@ export function AyudaPage() {
               predicted="0 – 0" label="Resultado real" />
             <div className="space-y-1.5">
               <div className="flex items-center justify-between bg-blue-500/10 rounded-lg px-3 py-2">
-                <span className="text-xs text-text-secondary">Predijiste empate y fue empate</span>
+                <span className="text-xs text-zinc-300">Predijiste empate y fue empate</span>
                 <span className="text-sm font-bold text-blue-400">+{cfg.correct_draw_points} pts</span>
               </div>
-              <p className="text-[11px] text-text-muted px-1">
+              <p className="text-[11px] text-zinc-200 px-1">
                 El marcador no fue exacto (0–0 vs 1–1), pero acertaste el empate.
               </p>
             </div>
@@ -500,31 +499,31 @@ export function AyudaPage() {
             <MatchExample home="México" away="Uruguay" homeScore={0} awayScore={2}
               predicted="1 – 1" label="Resultado real" />
             <div className="bg-border/50 rounded-lg px-3 py-2">
-              <p className="text-xs text-text-muted">
+              <p className="text-xs text-zinc-200">
                 Predijiste empate pero ganó Uruguay. No acertaste ni el ganador ni el marcador.
               </p>
-              <span className="text-sm font-bold text-text-muted">0 pts</span>
+              <span className="text-sm font-bold text-zinc-200">0 pts</span>
             </div>
           </Scenario>
         </div>
 
         {/* Resumen máximo grupos */}
         <div className="bg-primary/5 border border-primary/20 rounded-xl p-3 flex items-center justify-between">
-          <p className="text-xs text-text-secondary">Máximo por partido en fase de grupos</p>
+          <p className="text-xs text-zinc-300">Máximo por partido en fase de grupos</p>
           <span className="text-lg font-bold text-primary">{maxGrupos} pts</span>
         </div>
       </section>
 
       {/* ── FASE ELIMINATORIA ── */}
       <section className="space-y-3">
-        <h2 className="text-xs font-semibold text-text-muted uppercase tracking-widest flex items-center gap-2">
+        <h2 className="text-xs font-semibold text-zinc-200 uppercase tracking-widest flex items-center gap-2">
           <span className="w-5 h-px bg-border inline-block" />
           Fase eliminatoria
           <span className="flex-1 h-px bg-border inline-block" />
         </h2>
 
         <div className="card p-4">
-          <p className="text-sm text-text-secondary mb-3">
+          <p className="text-sm text-zinc-300 mb-3">
             En eliminatorias hay tiempo extra y penales. La predicción es progresiva: primero los 90 minutos,
             luego el tiempo extra si hay empate, y finalmente los penales si sigue empatado.
           </p>
@@ -563,11 +562,11 @@ export function AyudaPage() {
               predicted="2 – 1" label="Resultado a 90 min (real)" />
             <div className="space-y-1">
               <div className="flex justify-between px-3 py-1.5 bg-primary/10 rounded text-xs">
-                <span className="text-text-secondary">Resultado exacto</span>
+                <span className="text-zinc-300">Resultado exacto</span>
                 <span className="font-bold text-primary">+{cfg.exact_score_points}</span>
               </div>
               <div className="flex justify-between px-3 py-1.5 bg-accent/10 rounded text-xs">
-                <span className="text-text-secondary">Bonus eliminatoria</span>
+                <span className="text-zinc-300">Bonus eliminatoria</span>
                 <span className="font-bold text-accent">+{cfg.knockout_exact_score_bonus}</span>
               </div>
               <div className="flex justify-between px-3 py-2 bg-surface-2 rounded text-sm font-bold">
@@ -581,33 +580,33 @@ export function AyudaPage() {
             <MatchExample home="Brasil" away="Holanda" homeScore={1} awayScore={1}
               predicted="1 – 1" label="90 min (empate real)" />
             <div className="bg-background rounded-lg p-3 space-y-2">
-              <p className="text-[10px] text-text-muted uppercase tracking-wider">Resultado completo del partido</p>
+              <p className="text-[10px] text-zinc-200 uppercase tracking-wider">Resultado completo del partido</p>
               <div className="flex items-center justify-between text-sm">
                 <span className="font-medium text-text-primary w-16 truncate">Brasil</span>
-                <span className="font-bold tabular-nums text-text-muted mx-2">
+                <span className="font-bold tabular-nums text-zinc-200 mx-2">
                   1 – 1
                 </span>
                 <span className="font-medium text-text-primary w-16 truncate text-right">Holanda</span>
               </div>
-              <p className="text-[11px] text-text-secondary">Tiempo extra: 0 – 0 (sin goles adicionales)</p>
-              <p className="text-[11px] text-text-secondary">Penales: Brasil 4 – 3 Holanda</p>
-              <p className="text-[11px] text-text-muted">Tu predicción: 1 – 1 · ET 0 – 0 · Ganador penales: Brasil</p>
+              <p className="text-[11px] text-zinc-300">Tiempo extra: 0 – 0 (sin goles adicionales)</p>
+              <p className="text-[11px] text-zinc-300">Penales: Brasil 4 – 3 Holanda</p>
+              <p className="text-[11px] text-zinc-200">Tu predicción: 1 – 1 · ET 0 – 0 · Ganador penales: Brasil</p>
             </div>
             <div className="space-y-1">
               <div className="flex justify-between px-3 py-1.5 bg-primary/10 rounded text-xs">
-                <span className="text-text-secondary">Exacto 90 min (1–1)</span>
+                <span className="text-zinc-300">Exacto 90 min (1–1)</span>
                 <span className="font-bold text-primary">+{cfg.exact_score_points}</span>
               </div>
               <div className="flex justify-between px-3 py-1.5 bg-accent/10 rounded text-xs">
-                <span className="text-text-secondary">Bonus eliminatoria</span>
+                <span className="text-zinc-300">Bonus eliminatoria</span>
                 <span className="font-bold text-accent">+{cfg.knockout_exact_score_bonus}</span>
               </div>
               <div className="flex justify-between px-3 py-1.5 bg-purple-500/10 rounded text-xs">
-                <span className="text-text-secondary">Exacto ET (0–0 adicional)</span>
+                <span className="text-zinc-300">Exacto ET (0–0 adicional)</span>
                 <span className="font-bold text-purple-400">+{cfg.correct_et_result_points}</span>
               </div>
               <div className="flex justify-between px-3 py-1.5 bg-blue-500/10 rounded text-xs">
-                <span className="text-text-secondary">Ganador penales (Brasil)</span>
+                <span className="text-zinc-300">Ganador penales (Brasil)</span>
                 <span className="font-bold text-blue-400">+{cfg.correct_pk_winner_points}</span>
               </div>
               <div className="flex justify-between px-3 py-2 bg-surface-2 rounded text-sm font-bold">
@@ -621,8 +620,8 @@ export function AyudaPage() {
         {/* Resumen máximo eliminatorias */}
         <div className="bg-accent/5 border border-accent/20 rounded-xl p-3 flex items-center justify-between">
           <div>
-            <p className="text-xs text-text-secondary">Máximo por partido eliminatorio con penales</p>
-            <p className="text-[11px] text-text-muted mt-0.5">
+            <p className="text-xs text-zinc-300">Máximo por partido eliminatorio con penales</p>
+            <p className="text-[11px] text-zinc-200 mt-0.5">
               {cfg.exact_score_points} exacto + {cfg.knockout_exact_score_bonus} bonus + {cfg.correct_et_result_points} ET + {cfg.correct_pk_winner_points} penales
             </p>
           </div>
@@ -632,7 +631,7 @@ export function AyudaPage() {
 
       {/* ── TABLA RESUMEN ── */}
       <section className="space-y-3">
-        <h2 className="text-xs font-semibold text-text-muted uppercase tracking-widest flex items-center gap-2">
+        <h2 className="text-xs font-semibold text-zinc-200 uppercase tracking-widest flex items-center gap-2">
           <span className="w-5 h-px bg-border inline-block" />
           Resumen de puntos
           <span className="flex-1 h-px bg-border inline-block" />
@@ -642,9 +641,9 @@ export function AyudaPage() {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-border">
-                <th className="text-left px-4 py-3 text-xs text-text-muted font-medium">Situación</th>
-                <th className="text-right px-4 py-3 text-xs text-text-muted font-medium">Grupos</th>
-                <th className="text-right px-4 py-3 text-xs text-text-muted font-medium">Eliminat.</th>
+                <th className="text-left px-4 py-3 text-xs text-zinc-200 font-medium">Situación</th>
+                <th className="text-right px-4 py-3 text-xs text-zinc-200 font-medium">Grupos</th>
+                <th className="text-right px-4 py-3 text-xs text-zinc-200 font-medium">Eliminat.</th>
               </tr>
             </thead>
             <tbody>
@@ -676,11 +675,11 @@ export function AyudaPage() {
                 },
               ].map(({ label, grupos, elim }) => (
                 <tr key={label} className="border-b border-border last:border-0">
-                  <td className="px-4 py-3 text-text-secondary">{label}</td>
+                  <td className="px-4 py-3 text-zinc-300">{label}</td>
                   <td className="px-4 py-3 text-right font-bold tabular-nums">
                     {grupos !== null
                       ? <span className="text-primary">+{grupos}</span>
-                      : <span className="text-text-muted">—</span>
+                      : <span className="text-zinc-200">—</span>
                     }
                   </td>
                   <td className="px-4 py-3 text-right font-bold tabular-nums">
@@ -698,17 +697,17 @@ export function AyudaPage() {
 
       {/* ── + PUNTOS (APUESTAS ESPECIALES) ── */}
       <section className="space-y-3">
-        <h2 className="text-xs font-semibold text-text-muted uppercase tracking-widest flex items-center gap-2">
+        <h2 className="text-xs font-semibold text-zinc-200 uppercase tracking-widest flex items-center gap-2">
           <span className="w-5 h-px bg-border inline-block" />
           Apuestas especiales (+ Puntos)
           <span className="flex-1 h-px bg-border inline-block" />
         </h2>
 
         <div className="card p-4 space-y-2">
-          <p className="text-sm text-text-secondary leading-relaxed">
+          <p className="text-sm text-zinc-300 leading-relaxed">
             Además de predecir partidos, podés ganar puntos extra respondiendo preguntas especiales
             antes de que inicie el torneo. Se encuentran en la sección{' '}
-            <Link to="/mas-puntos" className="text-accent underline font-medium">+ Puntos</Link>.
+            <Link to="/mas-puntos" className="text-primary underline font-medium">+ Puntos</Link>.
           </p>
         </div>
 
@@ -759,23 +758,23 @@ export function AyudaPage() {
           ].map(({ icon, title, pts, when, example }) => (
             <div key={title} className="border-b border-border last:border-0 px-4 py-3 space-y-1">
               <div className="flex items-start justify-between gap-3">
-                <p className="text-sm font-semibold text-text-primary">
+                <p className="text-sm font-semibold text-zinc-200">
                   {icon} {title}
                 </p>
-                <span className="flex-shrink-0 text-xs font-bold text-accent bg-accent/10 rounded px-2 py-0.5">{pts}</span>
+                <span className="flex-shrink-0 text-xs font-bold text-zinc-200  rounded px-2 py-0.5">{pts}</span>
               </div>
-              <p className="text-[11px] text-text-muted">⏱ {when}</p>
-              <p className="text-[11px] text-text-secondary leading-relaxed">Ej: {example}</p>
+              <p className="text-[11px] text-zinc-400">⏱ {when}</p>
+              <p className="text-[11px] text-zinc-400 leading-relaxed">Ej: {example}</p>
             </div>
           ))}
         </div>
 
         <div className="bg-accent/5 border border-accent/20 rounded-xl p-3 flex items-center justify-between">
           <div>
-            <p className="text-xs text-text-secondary flex items-center gap-1.5">
+            <p className="text-xs text-zinc-300 flex items-center gap-1.5">
               <Star size={12} className="text-accent" /> Máximo de puntos especiales
             </p>
-            <p className="text-[11px] text-text-muted mt-0.5">
+            <p className="text-[11px] text-zinc-200 mt-0.5">
               Si acertás las 6 apuestas especiales (podio completo) podés sumar más de{' '}
               {(bonusCfg['podio_exacto'] ?? 10) * 4 + (bonusCfg['empates_grupos'] ?? 15) + (bonusCfg['rango_goles'] ?? 20) + (bonusCfg['final_cero'] ?? 25) + (bonusCfg['top_scorer_team'] ?? 20) + (bonusCfg['top_group_goals'] ?? 13)} pts extra.
             </p>
@@ -788,7 +787,7 @@ export function AyudaPage() {
 
       {/* ── CONSEJOS ── */}
       <section className="space-y-3">
-        <h2 className="text-xs font-semibold text-text-muted uppercase tracking-widest flex items-center gap-2">
+        <h2 className="text-xs font-semibold text-zinc-200 uppercase tracking-widest flex items-center gap-2">
           <span className="w-5 h-px bg-border inline-block" />
           Consejos
           <span className="flex-1 h-px bg-border inline-block" />
@@ -819,8 +818,8 @@ export function AyudaPage() {
             <div key={tip} className="flex gap-3">
               <span className="text-lg flex-shrink-0">{emoji}</span>
               <div>
-                <p className="text-sm font-medium text-text-primary">{tip}</p>
-                <p className="text-[12px] text-text-muted mt-0.5 leading-relaxed">{desc}</p>
+                <p className="text-sm font-medium text-zinc-200">{tip}</p>
+                <p className="text-[12px] text-zinc-400 mt-0.5 leading-relaxed">{desc}</p>
               </div>
             </div>
           ))}

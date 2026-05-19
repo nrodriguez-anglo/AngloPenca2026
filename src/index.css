@@ -51,11 +51,11 @@
 
 @layer components {
   .card {
-    @apply bg-zinc-100 border border-border rounded-xl shadow-sm;
+    @apply bg-black rounded-xl shadow-sm;
   }
 
   .btn-primary {
-    @apply bg-zinc-800 hover:bg-white hover:text-primary text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply bg-white hover:bg-white hover:text-primary text-black font-medium px-4 py-2 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   .btn-secondary {
@@ -75,7 +75,7 @@
   }
 
   .badge-primary {
-    @apply badge bg-zinc-800 text-zinc-100;
+    @apply badge bg-black text-white border border-border;
   }
 
   .badge-accent {
