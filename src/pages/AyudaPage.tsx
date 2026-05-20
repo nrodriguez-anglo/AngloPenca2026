@@ -96,7 +96,7 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
             <div className="w-11 h-6 bg-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-text-muted after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary peer-checked:after:bg-white" />
           </label>
           <div>
-            <p className="text-sm font-medium text-text-primary">
+            <p className="text-sm font-medium text-white">
               {isGroup ? 'Fase de grupos' : 'Fase eliminatoria'}
             </p>
             <p className="text-[11px] text-zinc-200">
@@ -107,9 +107,9 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
 
         {/* Equipos */}
         <div className="flex items-center justify-between text-sm px-2">
-          <span className="font-semibold text-text-primary w-20 truncate">Uruguay</span>
+          <span className="font-semibold text-white w-20 truncate">Uruguay</span>
           <span className="text-xs text-zinc-200">vs</span>
-          <span className="font-semibold text-text-primary w-20 truncate text-right">Argentina</span>
+          <span className="font-semibold text-white w-20 truncate text-right">Argentina</span>
         </div>
 
         {/* Resultado real */}
@@ -123,7 +123,7 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
                 min={0}
                 value={realHome}
                 onChange={e => setRealHome(Math.max(0, Number(e.target.value)))}
-                className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-text-primary focus:outline-none focus:border-primary"
+                className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-white focus:outline-none focus:border-primary"
               />
             </div>
             <span className="text-lg font-bold text-zinc-200 pt-5">–</span>
@@ -134,7 +134,7 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
                 min={0}
                 value={realAway}
                 onChange={e => setRealAway(Math.max(0, Number(e.target.value)))}
-                className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-text-primary focus:outline-none focus:border-primary"
+                className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-white focus:outline-none focus:border-primary"
               />
             </div>
           </div>
@@ -149,7 +149,7 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
                   min={0}
                   value={realEtHome}
                   onChange={e => setRealEtHome(Math.max(0, Number(e.target.value)))}
-                  className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-text-primary focus:outline-none focus:border-primary"
+                  className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-white focus:outline-none focus:border-primary"
                 />
               </div>
               <span className="text-lg font-bold text-zinc-200 pt-5">–</span>
@@ -160,7 +160,7 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
                   min={0}
                   value={realEtAway}
                   onChange={e => setRealEtAway(Math.max(0, Number(e.target.value)))}
-                  className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-text-primary focus:outline-none focus:border-primary"
+                  className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-white focus:outline-none focus:border-primary"
                 />
               </div>
             </div>
@@ -207,7 +207,7 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
                 min={0}
                 value={predHome}
                 onChange={e => setPredHome(Math.max(0, Number(e.target.value)))}
-                className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-text-primary focus:outline-none focus:border-accent"
+                className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-white focus:outline-none focus:border-accent"
               />
             </div>
             <span className="text-lg font-bold text-zinc-200 pt-5">–</span>
@@ -218,7 +218,7 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
                 min={0}
                 value={predAway}
                 onChange={e => setPredAway(Math.max(0, Number(e.target.value)))}
-                className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-text-primary focus:outline-none focus:border-accent"
+                className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-white focus:outline-none focus:border-accent"
               />
             </div>
           </div>
@@ -233,7 +233,7 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
                   min={0}
                   value={predEtHome}
                   onChange={e => setPredEtHome(Math.max(0, Number(e.target.value)))}
-                  className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-text-primary focus:outline-none focus:border-accent"
+                  className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-white focus:outline-none focus:border-accent"
                 />
               </div>
               <span className="text-lg font-bold text-zinc-200 pt-5">–</span>
@@ -244,7 +244,7 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
                   min={0}
                   value={predEtAway}
                   onChange={e => setPredEtAway(Math.max(0, Number(e.target.value)))}
-                  className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-text-primary focus:outline-none focus:border-accent"
+                  className="w-full bg-surface border border-border rounded px-3 py-2 text-center text-sm text-white focus:outline-none focus:border-accent"
                 />
               </div>
             </div>
@@ -292,7 +292,7 @@ function ScoreCalculator({ cfg }: { cfg: ScoringConfig }) {
                 </div>
               ))}
               <div className="border-t border-border pt-2 mt-2 flex items-center justify-between">
-                <span className="text-sm font-semibold text-text-primary">Total</span>
+                <span className="text-sm font-semibold text-white">Total</span>
                 <span className="text-xl font-bold text-primary">{points} pts</span>
               </div>
             </div>
@@ -319,11 +319,11 @@ function MatchExample({
     <div className="bg-background rounded-lg p-3 space-y-2">
       <p className="text-[10px] text-zinc-200 uppercase tracking-wider">{label}</p>
       <div className="flex items-center justify-between text-sm">
-        <span className="font-medium text-text-primary w-16 truncate">{home}</span>
+        <span className="font-medium text-white w-16 truncate">{home}</span>
         <span className="font-bold tabular-nums text-primary mx-2">
           {homeScore} – {awayScore}
         </span>
-        <span className="font-medium text-text-primary w-16 truncate text-right">{away}</span>
+        <span className="font-medium text-white w-16 truncate text-right">{away}</span>
       </div>
       <div className="flex items-center gap-1.5">
         <span className="text-[11px] text-zinc-200">Tu predicción:</span>
@@ -338,7 +338,7 @@ function PtsRow({ label, pts, sub }: { label: string; pts: number; sub?: string 
   return (
     <div className="flex items-start justify-between gap-3 py-2.5 border-b border-border last:border-0">
       <div className="min-w-0">
-        <p className="text-sm text-text-primary">{label}</p>
+        <p className="text-sm text-white">{label}</p>
         {sub && <p className="text-[11px] text-zinc-200 mt-0.5">{sub}</p>}
       </div>
       <span className="flex-shrink-0 text-base font-bold text-primary tabular-nums">
@@ -360,7 +360,7 @@ function Scenario({
         <div className={`w-7 h-7 rounded-full flex items-center justify-center ${color}`}>
           <Icon size={14} />
         </div>
-        <p className="text-sm font-semibold text-text-primary">{title}</p>
+        <p className="text-sm font-semibold text-white">{title}</p>
       </div>
       {children}
     </div>
@@ -411,7 +411,6 @@ export function AyudaPage() {
       <div className="flex items-center gap-3">
         <div>
           <h1 className="text-xl font-bold text-white italic">¿Cómo funciona la Penca?</h1>
-          <p className="text-xs text-zinc-500 mt-0.5">Config activa: <span className="text-zinc-500">{cfg.name}</span></p>
         </div>
       </div>
 
@@ -456,7 +455,7 @@ export function AyudaPage() {
         </div>
 
         {/* Ejemplos fase de grupos */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {/*<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
 
           <Scenario icon={Target} color="bg-primary/20 text-primary" title="Resultado exacto">
             <MatchExample home="Argentina" away="Brasil" homeScore={2} awayScore={1}
@@ -505,13 +504,13 @@ export function AyudaPage() {
               <span className="text-sm font-bold text-zinc-200">0 pts</span>
             </div>
           </Scenario>
-        </div>
+        </div>*/}
 
         {/* Resumen máximo grupos */}
-        <div className="bg-primary/5 border border-primary/20 rounded-xl p-3 flex items-center justify-between">
+        {/* <div className="bg-primary/5 border border-primary/20 rounded-xl p-3 flex items-center justify-between">
           <p className="text-xs text-zinc-300">Máximo por partido en fase de grupos</p>
           <span className="text-lg font-bold text-primary">{maxGrupos} pts</span>
-        </div>
+        </div>*/}
       </section>
 
       {/* ── FASE ELIMINATORIA ── */}
@@ -555,7 +554,7 @@ export function AyudaPage() {
         </div>
 
         {/* Ejemplos eliminatoria */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {/*<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
 
           <Scenario icon={Zap} color="bg-accent/20 text-accent" title={`Exacto en eliminatoria → ${maxElim} pts`}>
             <MatchExample home="Portugal" away="Alemania" homeScore={2} awayScore={1}
@@ -570,7 +569,7 @@ export function AyudaPage() {
                 <span className="font-bold text-accent">+{cfg.knockout_exact_score_bonus}</span>
               </div>
               <div className="flex justify-between px-3 py-2 bg-surface-2 rounded text-sm font-bold">
-                <span className="text-text-primary">Total</span>
+                <span className="text-white">Total</span>
                 <span className="text-primary">{maxElim} pts</span>
               </div>
             </div>
@@ -582,11 +581,11 @@ export function AyudaPage() {
             <div className="bg-background rounded-lg p-3 space-y-2">
               <p className="text-[10px] text-zinc-200 uppercase tracking-wider">Resultado completo del partido</p>
               <div className="flex items-center justify-between text-sm">
-                <span className="font-medium text-text-primary w-16 truncate">Brasil</span>
+                <span className="font-medium text-white w-16 truncate">Brasil</span>
                 <span className="font-bold tabular-nums text-zinc-200 mx-2">
                   1 – 1
                 </span>
-                <span className="font-medium text-text-primary w-16 truncate text-right">Holanda</span>
+                <span className="font-medium text-white w-16 truncate text-right">Holanda</span>
               </div>
               <p className="text-[11px] text-zinc-300">Tiempo extra: 0 – 0 (sin goles adicionales)</p>
               <p className="text-[11px] text-zinc-300">Penales: Brasil 4 – 3 Holanda</p>
@@ -610,15 +609,15 @@ export function AyudaPage() {
                 <span className="font-bold text-blue-400">+{cfg.correct_pk_winner_points}</span>
               </div>
               <div className="flex justify-between px-3 py-2 bg-surface-2 rounded text-sm font-bold">
-                <span className="text-text-primary">Total si todo correcto</span>
+                <span className="text-white">Total si todo correcto</span>
                 <span className="text-primary">{maxConPenales} pts</span>
               </div>
             </div>
           </Scenario>
-        </div>
+        </div>*/}
 
         {/* Resumen máximo eliminatorias */}
-        <div className="bg-accent/5 border border-accent/20 rounded-xl p-3 flex items-center justify-between">
+        {/*<div className="bg-accent/5 border border-accent/20 rounded-xl p-3 flex items-center justify-between">
           <div>
             <p className="text-xs text-zinc-300">Máximo por partido eliminatorio con penales</p>
             <p className="text-[11px] text-zinc-200 mt-0.5">
@@ -626,11 +625,11 @@ export function AyudaPage() {
             </p>
           </div>
           <span className="text-lg font-bold text-accent">{maxConPenales} pts</span>
-        </div>
+        </div>*/}
       </section>
 
       {/* ── TABLA RESUMEN ── */}
-      <section className="space-y-3">
+      {/*<section className="space-y-3">
         <h2 className="text-xs font-semibold text-zinc-200 uppercase tracking-widest flex items-center gap-2">
           <span className="w-5 h-px bg-border inline-block" />
           Resumen de puntos
@@ -690,10 +689,10 @@ export function AyudaPage() {
             </tbody>
           </table>
         </div>
-      </section>
+      </section>*/}
 
       {/* ── CALCULADORA DE PUNTOS ── */}
-      <ScoreCalculator cfg={cfg} />
+      {/* <ScoreCalculator cfg={cfg} />*/}
 
       {/* ── + PUNTOS (APUESTAS ESPECIALES) ── */}
       <section className="space-y-3">
@@ -763,13 +762,13 @@ export function AyudaPage() {
                 </p>
                 <span className="flex-shrink-0 text-xs font-bold text-zinc-200  rounded px-2 py-0.5">{pts}</span>
               </div>
-              <p className="text-[11px] text-zinc-400">⏱ {when}</p>
-              <p className="text-[11px] text-zinc-400 leading-relaxed">Ej: {example}</p>
+              <p className="text-[11px] text-zinc-300">⏱ {when}</p>
+              <p className="text-[11px] text-zinc-300 leading-relaxed">Ej: {example}</p>
             </div>
           ))}
         </div>
 
-        <div className="bg-accent/5 border border-accent/20 rounded-xl p-3 flex items-center justify-between">
+        {/*<div className="bg-accent/5 border border-accent/20 rounded-xl p-3 flex items-center justify-between">
           <div>
             <p className="text-xs text-zinc-300 flex items-center gap-1.5">
               <Star size={12} className="text-accent" /> Máximo de puntos especiales
@@ -783,10 +782,10 @@ export function AyudaPage() {
             Apostar →
           </Link>
         </div>
-      </section>
+      </section>*/}
 
       {/* ── CONSEJOS ── */}
-      <section className="space-y-3">
+      {/*<section className="space-y-3">
         <h2 className="text-xs font-semibold text-zinc-200 uppercase tracking-widest flex items-center gap-2">
           <span className="w-5 h-px bg-border inline-block" />
           Consejos
@@ -819,11 +818,11 @@ export function AyudaPage() {
               <span className="text-lg flex-shrink-0">{emoji}</span>
               <div>
                 <p className="text-sm font-medium text-zinc-200">{tip}</p>
-                <p className="text-[12px] text-zinc-400 mt-0.5 leading-relaxed">{desc}</p>
+                <p className="text-[12px] text-zinc-300 mt-0.5 leading-relaxed">{desc}</p>
               </div>
             </div>
           ))}
-        </div>
+        </div>*/}
       </section>
 
 

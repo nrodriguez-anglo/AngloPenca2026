@@ -52,6 +52,7 @@ export function Header() {
             {user && <DeskNavLink to="/subgrupos">Subgrupos</DeskNavLink>}
             <DeskNavLink to="/cuadro">Cuadro</DeskNavLink>
             {user && <DeskNavLink to="/mis-predicciones">JUGAR</DeskNavLink>}
+            {user && <DeskNavLink to="/ayuda">Ayuda</DeskNavLink>}
             {user && <DeskNavLink to="/mas-puntos">+ Puntos</DeskNavLink>}
             {/* <DeskNavLink to="/ayuda">
               <HelpCircle size={14} className="inline mr-1" />Ayuda
@@ -148,6 +149,7 @@ export function Header() {
             <MobileNavLink to="/cuadro">Cuadro</MobileNavLink>
             {user && <MobileNavLink to="/mis-predicciones">JUGAR</MobileNavLink>}
             {user && <MobileNavLink to="/mas-puntos">+ Puntos</MobileNavLink>}
+            {user && <MobileNavLink to="/ayuda">Ayuda</MobileNavLink>}
             {user && <MobileNavLink to="/perfil">Mi perfil</MobileNavLink>}
             {/* <MobileNavLink to="/ayuda">Ayuda · Puntaje</MobileNavLink> */}
             {!user && <MobileNavLink to="/auth">Ingresar</MobileNavLink>}
