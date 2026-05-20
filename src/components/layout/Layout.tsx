@@ -59,7 +59,6 @@ export function Layout() {
       </main>
 
       <div className="relative z-20">
-  <BottomNav />
   <Footer />
 </div>
     </div>
