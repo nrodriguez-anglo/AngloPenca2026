@@ -27,8 +27,10 @@ import { MasPuntosPage } from './pages/MasPuntosPage'
 import { SubgruposPage } from './pages/SubgruposPage'
 import { SubgrupoDetailPage } from './pages/SubgrupoDetailPage'
 import { AuthCallbackPage } from './pages/AuthCallbackPage'
+import { BasesCondicionesPage } from './pages/BasesYCondiciones'
 import { useUpdateCheck } from './hooks/useUpdateCheck'
 import { UpdateModal } from './components/ui/UpdateModal'
+
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -46,6 +48,7 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Navigate to="/fixture" replace />} />
+            <Route path="bases-condiciones" element={<BasesCondicionesPage />} />
             <Route path="fixture"           element={<FixturePage />} />
             <Route path="grupos"            element={<GruposPage />} />
             <Route path="grupos/:grupo"     element={<GrupoDetailPage />} />

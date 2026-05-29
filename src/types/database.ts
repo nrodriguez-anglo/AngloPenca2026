@@ -145,6 +145,7 @@ export interface Profile {
   is_admin: boolean
   is_loader: boolean  // puede cargar resultados, sin acceso al resto del admin
   created_at: string
+  user_type: string
 }
 
 export interface Prediction {

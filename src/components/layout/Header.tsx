@@ -79,8 +79,11 @@ export function Header() {
 
                 {userMenuOpen && (
                   <div className="absolute bg-white right-0 top-full mt-1 w-48 card py-1 shadow-2xl z-50">
-                    <Link to="/perfil" className="block px-4 py-2 text-sm text-primary hover:text-black hover:bg-surface-2 transition-colors">
+                    <Link to="/perfil" className="block px-4 py-2 text-sm text-accent hover:text-primary hover:bg-surface-2 transition-colors">
                       Mi perfil
+                    </Link>
+                    <Link to="/bases-condiciones" className="block px-4 py-2 text-sm text-accent hover:text-primary hover:bg-surface-2 transition-colors">
+                      Bases y Condiciones
                     </Link>
                     {isAdmin && (
                       <>
@@ -151,6 +154,7 @@ export function Header() {
             {user && <MobileNavLink to="/mas-puntos">+ Puntos</MobileNavLink>}
             {user && <MobileNavLink to="/ayuda">Ayuda</MobileNavLink>}
             {user && <MobileNavLink to="/perfil">Mi perfil</MobileNavLink>}
+            {user && <MobileNavLink to="/bases-condiciones">Bases y Condiciones</MobileNavLink>}
             {/* <MobileNavLink to="/ayuda">Ayuda · Puntaje</MobileNavLink> */}
             {!user && <MobileNavLink to="/auth">Ingresar</MobileNavLink>}
           </nav>

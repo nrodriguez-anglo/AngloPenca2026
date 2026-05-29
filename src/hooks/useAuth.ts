@@ -55,5 +55,6 @@ export function useAuth() {
     isAdmin:  state.profile?.is_admin  ?? false,
     isLoader: state.profile?.is_loader ?? false,
     isActive: state.profile?.is_active ?? false,
+    group: state.profile?.user_type ?? "",
   }
 }
