@@ -42,7 +42,16 @@ function PredecirTab() {
   const [selected, setSelected] = useState<MatchWithRelations | null>(null)
 
   const upcoming = useMemo(
-    () => matches.filter(m => m.home_score_90 === null),
+    () =>
+      matches.filter(m => {
+        const now = new Date()
+        const kickoff = new Date(m.match_datetime)
+
+        return (
+          m.home_score_90 === null &&
+          kickoff > now
+        )
+      }),
     [matches]
   )
 
