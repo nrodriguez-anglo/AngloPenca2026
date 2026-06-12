@@ -238,6 +238,7 @@ export interface LeaderboardEntry {
   user_id: string
   username: string
   display_name: string
+  user_type: string
   avatar_url: string | null
   total_points: number
   predictions_count: number

@@ -49,14 +49,12 @@ export function Header() {
             <DeskNavLink to="/fixture">Fixture</DeskNavLink>
             <DeskNavLink to="/grupos">Grupos</DeskNavLink>
             <DeskNavLink to="/ranking">Ranking</DeskNavLink>
-            {user && <DeskNavLink to="/subgrupos">Subgrupos</DeskNavLink>}
+            {/*user && <DeskNavLink to="/subgrupos">Subgrupos</DeskNavLink>*/}
             <DeskNavLink to="/cuadro">Cuadro</DeskNavLink>
             {user && <DeskNavLink to="/mis-predicciones">JUGAR</DeskNavLink>}
             {user && <DeskNavLink to="/ayuda">Ayuda</DeskNavLink>}
             {user && <DeskNavLink to="/mas-puntos">+ Puntos</DeskNavLink>}
-            {/* <DeskNavLink to="/ayuda">
-              <HelpCircle size={14} className="inline mr-1" />Ayuda
-            </DeskNavLink> */}
+            {/* <DeskNavLink to="/ayuda"><HelpCircle size={14} className="inline mr-1" />Ayuda</DeskNavLink> */}
           </nav>
 
           {/* Derecha: usuario o botón ingresar */}
@@ -148,7 +146,7 @@ export function Header() {
             <MobileNavLink to="/fixture">Fixture</MobileNavLink>
             <MobileNavLink to="/grupos">Grupos</MobileNavLink>
             <MobileNavLink to="/ranking">Ranking</MobileNavLink>
-            {user && <MobileNavLink to="/subgrupos">Subgrupos</MobileNavLink>}
+            {/*user && <MobileNavLink to="/subgrupos">Subgrupos</MobileNavLink>*/}
             <MobileNavLink to="/cuadro">Cuadro</MobileNavLink>
             {user && <MobileNavLink to="/mis-predicciones">JUGAR</MobileNavLink>}
             {user && <MobileNavLink to="/mas-puntos">+ Puntos</MobileNavLink>}
