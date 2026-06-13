@@ -42,7 +42,7 @@ function LeaderboardRow({
   return (
     <div
       className={`card p-3 flex items-center gap-3 transition-colors ${
-        isMe ? 'border-white border bg-black' : ''
+        isMe ? ' bg-black' : ''
       }`}
     >
       {/* Rank */}
@@ -100,8 +100,8 @@ function TopThree({ entries, myId }: { entries: LeaderboardEntry[]; myId?: strin
         <div
           className={`w-full flex flex-col items-center justify-end rounded-t-lg ${height} ${
             entry.rank === 1
-              ? 'bg-black border border-white'
-              : 'bg-black'
+              ? 'bg-gradient-to-t from-black to-AngloRed'
+              : 'bg-gradient-to-t from-black to-AngloRed'
           }`}
         >
           <MedalOrRank rank={entry.rank} />
@@ -137,6 +137,10 @@ export function RankingGrupoPage() {
 
   const myId = user?.id
   const group = profile?.user_type
+  const userTypeLabel =
+  profile?.user_type === 'funcionario'
+    ? '(Funcionarios)'
+    : '(Alumnos)'
 
   const {
     data: entries = [],
@@ -150,7 +154,7 @@ export function RankingGrupoPage() {
   return (
     <div>
       <div className="flex items-center gap-2 mb-5">
-        <h1 className="text-xl font-bold italic text-white">Ranking</h1>
+        <h1 className="text-xl font-bold italic text-white">Ranking {userTypeLabel}</h1>
       </div>
 
       {isLoading && (
