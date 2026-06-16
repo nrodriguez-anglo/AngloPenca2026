@@ -1,4 +1,5 @@
 import { Loader2, Target, Check } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import { useLeaderboardByGroup } from '../hooks/useLeaderboardByGroup'
 import { useAuth } from '../hooks/useAuth'
 import type { LeaderboardEntry } from '../types'
@@ -39,10 +40,13 @@ function LeaderboardRow({
   entry: LeaderboardEntry
   isMe: boolean
 }) {
+  const navigate = useNavigate()
+
   return (
     <div
-      className={`card p-3 flex items-center gap-3 transition-colors ${
-        isMe ? ' bg-black' : ''
+      onClick={() => navigate(`/usuario/${entry.user_id}/predicciones`)}
+      className={`card p-3 flex items-center gap-3 transition-colors cursor-pointer hover:border-primary/40 ${
+        isMe ? 'bg-black' : ''
       }`}
     >
       {/* Rank */}
@@ -59,15 +63,20 @@ function LeaderboardRow({
           <span className="text-sm font-medium text-white truncate">
             {entry.display_name}
           </span>
+
           {isMe && (
-            <span className="badge bg-primary/20 text-primary text-[10px]">Yo</span>
+            <span className="badge bg-primary/20 text-primary text-[10px]">
+              Yo
+            </span>
           )}
         </div>
+
         <div className="flex items-center gap-3 mt-0.5">
           <span className="flex items-center gap-1 text-[11px] text-zinc-200">
             <Check size={11} className="text-zinc-300" />
             {entry.predictions_count} pred.
           </span>
+
           <span className="flex items-center gap-1 text-[11px] text-zinc-200">
             <Target size={11} className="text-zinc-300" />
             {entry.exact_scores} exactos
@@ -80,23 +89,49 @@ function LeaderboardRow({
         <p className="text-xl font-bold tabular-nums text-primary leading-none">
           {entry.total_points}
         </p>
+
         <p className="text-[10px] text-zinc-200 mt-0.5">pts</p>
       </div>
     </div>
   )
 }
 
-function TopThree({ entries, myId }: { entries: LeaderboardEntry[]; myId?: string }) {
+function TopThree({
+  entries,
+  myId,
+}: {
+  entries: LeaderboardEntry[]
+  myId?: string
+}) {
   const [first, second, third] = entries
+  const navigate = useNavigate()
 
-  function PodiumCard({ entry, height }: { entry: LeaderboardEntry; height: string }) {
+  function PodiumCard({
+    entry,
+    height,
+  }: {
+    entry: LeaderboardEntry
+    height: string
+  }) {
     const isMe = entry.user_id === myId
+
     return (
-      <div className="flex flex-col items-center gap-2">
+      <div
+        onClick={() =>
+          navigate(`/usuario/${entry.user_id}/predicciones`)
+        }
+        className="flex flex-col items-center gap-2 cursor-pointer"
+      >
         <Avatar entry={entry} />
-        <p className={`text-xs font-medium text-center truncate max-w-[80px] ${isMe ? 'text-white' : 'text-white/90'}`}>
+
+        <p
+          className={`text-xs font-medium text-center truncate max-w-[80px] ${
+            isMe ? 'text-white' : 'text-white/90'
+          }`}
+        >
           {entry.display_name}
         </p>
+
         <div
           className={`w-full flex flex-col items-center justify-end rounded-t-lg ${height} ${
             entry.rank === 1
@@ -105,6 +140,7 @@ function TopThree({ entries, myId }: { entries: LeaderboardEntry[]; myId?: strin
           }`}
         >
           <MedalOrRank rank={entry.rank} />
+
           <p className="text-sm font-bold text-primary tabular-nums pb-2">
             {entry.total_points}
           </p>
@@ -122,7 +158,9 @@ function TopThree({ entries, myId }: { entries: LeaderboardEntry[]; myId?: strin
       ) : (
         <div />
       )}
+
       <PodiumCard entry={first} height="h-28" />
+
       {third ? (
         <PodiumCard entry={third} height="h-16" />
       ) : (

@@ -31,6 +31,7 @@ import { AuthCallbackPage } from './pages/AuthCallbackPage'
 import { BasesCondicionesPage } from './pages/BasesYCondiciones'
 import { useUpdateCheck } from './hooks/useUpdateCheck'
 import { UpdateModal } from './components/ui/UpdateModal'
+import { UserPredictionsPage } from './pages/UserPredictionsPage'
 
 
 const queryClient = new QueryClient({
@@ -64,6 +65,8 @@ function AppContent() {
             <Route path="mas-puntos"        element={<MasPuntosPage />} />
             <Route path="subgrupos"         element={<SubgruposPage />} />
             <Route path="subgrupos/:id"     element={<SubgrupoDetailPage />} />
+            <Route path="/usuario/:userId/predicciones" element={<UserPredictionsPage />}
+/>
             {/* Admin */}
             <Route path="admin/ranking"           element={<RankingPage />} />
             <Route path="admin/usuarios"    element={<UsuariosPage />} />

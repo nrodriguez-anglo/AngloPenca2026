@@ -59,3 +59,15 @@ export async function setUserLoader(userId: string, isLoader: boolean) {
   const { error } = await supabase.from('profiles').update({ is_loader: isLoader }).eq('id', userId)
   if (error) throw error
 }
+
+export async function fetchProfile(userId: string): Promise<Profile> {
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', userId)
+    .single()
+
+  if (error) throw error
+
+  return data as Profile
+}
