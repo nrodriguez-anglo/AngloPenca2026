@@ -101,9 +101,15 @@ export function UserPredictionsPage() {
                             </div>
                           )}
 
-                          <p className="text-[10px] text-zinc-300">
+                          <p className="text-[12px] text-zinc-200">
                             Pred: {pred.home_score}–{pred.away_score}
                           </p>
+
+                          {hasResult && (
+                            <p className="text-[12px] text-zinc-200">
+                              {pred.points_earned ?? 0} pts
+                            </p>
+                          )}
                         </div>
 
                         <div className="flex-1 min-w-0 flex justify-end">
