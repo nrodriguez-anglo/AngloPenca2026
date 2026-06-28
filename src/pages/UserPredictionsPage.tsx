@@ -6,6 +6,7 @@ import { useProfile } from '../hooks/useProfile'
 import { RequireAuth, RequireActive } from '../components/auth/AuthGuard'
 import { TeamFlag } from '../components/ui/TeamFlag'
 import { useUserPredictions } from '../hooks/useUserPredictions'
+import { useLeaderboardByGroup } from '../hooks/useLeaderboardByGroup'
 
 
 export function UserPredictionsPage() {
@@ -25,6 +26,33 @@ export function UserPredictionsPage() {
     [preds]
   )
 
+  const { data: leaderboard = [] } = useLeaderboardByGroup(
+    profile?.user_type
+  )
+
+  const leaderboardEntry = useMemo(
+    () => leaderboard.find(e => e.user_id === userId),
+    [leaderboard, userId]
+  )
+
+  const matchPoints = useMemo(
+    () =>
+      past.reduce(
+        (sum, pred) => sum + (pred.points_earned ?? 0),
+        0
+      ),
+    [past]
+  )
+
+  const extraPoints = useMemo(
+    () =>
+      Math.max(
+        0,
+        (leaderboardEntry?.total_points ?? 0) - matchPoints
+      ),
+    [leaderboardEntry, matchPoints]
+  )
+
   return (
     <RequireAuth>
       <RequireActive>
@@ -32,6 +60,19 @@ export function UserPredictionsPage() {
           <h1 className="text-xl font-bold text-white italic">
             Predicciones de {profile?.display_name ?? '...'}
           </h1>
+
+          <div className="card p-4 flex items-center justify-between">
+            <div>
+              <p className="text-sm text-zinc-400">Puntos extra</p>
+              <p className="text-xs text-zinc-500">
+                (Próximamente podrás ver el desglose)
+              </p>
+            </div>
+
+            <span className="text-xl font-bold text-white">
+              {extraPoints} pts
+            </span>
+        </div>
 
           {isLoading && (
             <div className="flex justify-center py-16">
