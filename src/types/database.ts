@@ -247,6 +247,15 @@ export interface LeaderboardEntry {
   rank: number
 }
 
+export interface BonusPoint {
+  id: string
+  user_id: string
+  bonus_type: string
+  points_earned: number
+  detail: Record<string, unknown> | null
+  calculated_at: string | null
+}
+
 // --- Subgrupos ---
 
 export interface Subgrupo {

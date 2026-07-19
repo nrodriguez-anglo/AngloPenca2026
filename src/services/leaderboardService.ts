@@ -1,5 +1,5 @@
 import { supabase } from '../lib/supabase'
-import type { LeaderboardEntry } from '../types'
+import type { LeaderboardEntry, BonusPoint } from '../types'
 
 export async function fetchLeaderboard(): Promise<LeaderboardEntry[]> {
   const { data, error } = await supabase
@@ -46,4 +46,17 @@ export async function getLeaderboardByGroup(
   }
 
   return rankedEntries
+}
+
+export async function getBonusPointsByUser(
+  userId: string
+): Promise<BonusPoint[]> {
+  const { data, error } = await supabase
+    .from('bonus_points')
+    .select('*')
+    .eq('user_id', userId)
+
+  if (error) throw error
+
+  return (data ?? []) as BonusPoint[]
 }

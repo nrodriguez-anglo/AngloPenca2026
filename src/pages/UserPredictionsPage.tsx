@@ -6,13 +6,14 @@ import { useProfile } from '../hooks/useProfile'
 import { RequireAuth, RequireActive } from '../components/auth/AuthGuard'
 import { TeamFlag } from '../components/ui/TeamFlag'
 import { useUserPredictions } from '../hooks/useUserPredictions'
-import { useLeaderboardByGroup } from '../hooks/useLeaderboardByGroup'
-
+import { useUserBonusPoints } from '../hooks/useUserBonusPoints'
+import { BONUS_LABELS, formatBonusDetail } from '../utils/bonusConfig'
 
 export function UserPredictionsPage() {
   const { userId } = useParams<{ userId: string }>()
   const { data: profile } = useProfile(userId)
   const { data: preds = [], isLoading } = useUserPredictions(userId)
+  const { data: bonusPoints = [], isLoading: isLoadingBonus } = useUserBonusPoints(userId)
 
   const past = useMemo(
     () =>
@@ -26,31 +27,14 @@ export function UserPredictionsPage() {
     [preds]
   )
 
-  const { data: leaderboard = [] } = useLeaderboardByGroup(
-    profile?.user_type
-  )
-
-  const leaderboardEntry = useMemo(
-    () => leaderboard.find(e => e.user_id === userId),
-    [leaderboard, userId]
-  )
-
-  const matchPoints = useMemo(
-    () =>
-      past.reduce(
-        (sum, pred) => sum + (pred.points_earned ?? 0),
-        0
-      ),
-    [past]
+  const earnedBonuses = useMemo(
+    () => bonusPoints.filter(b => b.points_earned > 0),
+    [bonusPoints]
   )
 
   const extraPoints = useMemo(
-    () =>
-      Math.max(
-        0,
-        (leaderboardEntry?.total_points ?? 0) - matchPoints
-      ),
-    [leaderboardEntry, matchPoints]
+    () => earnedBonuses.reduce((sum, b) => sum + b.points_earned, 0),
+    [earnedBonuses]
   )
 
   return (
@@ -61,18 +45,56 @@ export function UserPredictionsPage() {
             Predicciones de {profile?.display_name ?? '...'}
           </h1>
 
-          <div className="card p-4 flex items-center justify-between">
-            <div>
+          <div className="card p-4 space-y-3">
+            <div className="flex items-center justify-between">
               <p className="text-sm text-zinc-400">Puntos extra</p>
-              <p className="text-xs text-zinc-500">
-                (Próximamente podrás ver el desglose)
-              </p>
+              <span className="text-xl font-bold text-white">
+                {extraPoints} pts
+              </span>
             </div>
 
-            <span className="text-xl font-bold text-white">
-              {extraPoints} pts
-            </span>
-        </div>
+            {isLoadingBonus && (
+              <div className="flex justify-center py-2">
+                <Loader2 className="animate-spin text-zinc-500" size={18} />
+              </div>
+            )}
+
+            {!isLoadingBonus && earnedBonuses.length === 0 && (
+              <p className="text-xs text-zinc-500">
+                Todavía no sumó puntos extra.
+              </p>
+            )}
+
+            {!isLoadingBonus && earnedBonuses.length > 0 && (
+              <ul className="space-y-1.5 pt-1 border-t border-zinc-800">
+                {earnedBonuses.map(bonus => {
+                  const detailText = formatBonusDetail(bonus.bonus_type, bonus.detail)
+
+                  return (
+                    <li
+                      key={bonus.id}
+                      className="flex items-center justify-between text-xs"
+                    >
+                      <div>
+                        <p className="text-zinc-200">
+                          {(BONUS_LABELS[bonus.bonus_type] ?? bonus.bonus_type)
+                            .charAt(0)
+                            .toUpperCase() +
+                            (BONUS_LABELS[bonus.bonus_type] ?? bonus.bonus_type).slice(1)}
+                        </p>
+                        {detailText && (
+                          <p className="text-[11px] text-zinc-500">{detailText}</p>
+                        )}
+                      </div>
+                      <span className="text-zinc-300 font-semibold tabular-nums">
+                        +{bonus.points_earned}
+                      </span>
+                    </li>
+                  )
+                })}
+              </ul>
+            )}
+          </div>
 
           {isLoading && (
             <div className="flex justify-center py-16">
@@ -90,32 +112,25 @@ export function UserPredictionsPage() {
             <div className="space-y-3">
               {past.map(pred => {
                 const m = pred.match
-
                 const hasResult = m.home_score_90 !== null
 
                 return (
-                  <div
-                    key={pred.id}
-                    className="card p-3 flex items-center gap-3"
-                  >
-                    {/* Match info */}
+                  <div key={pred.id} className="card p-3 flex items-center gap-3">
                     <div className="flex-shrink-0 w-10 text-center">
                       <p className="text-[11px] text-text-muted">
                         #{m.match_number}
                       </p>
-
                       {m.group ? (
                         <span className="badge-primary text-[9px]">
                           G{m.group.name}
                         </span>
                       ) : (
-                        <span className="badge bg-accent/20 text-accent text-[9px]">
+                        <span className="badge bg-accent/20 text-zinc-200 text-[9px]">
                           {m.phase.name.substring(0, 3)}
                         </span>
                       )}
                     </div>
 
-                    {/* Teams */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 text-xs">
                         <div className="flex-1 min-w-0">
@@ -136,9 +151,7 @@ export function UserPredictionsPage() {
                           ) : (
                             <div className="flex items-center gap-1 text-zinc-300">
                               <Lock size={10} />
-                              <span className="text-[10px]">
-                                Esperando
-                              </span>
+                              <span className="text-[10px]">Esperando</span>
                             </div>
                           )}
 
